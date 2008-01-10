@@ -1,0 +1,602 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "MyMFC/pmsres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Neutral) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_FORMATS MENU 
+BEGIN
+    POPUP "Uhrzeitformat"
+    BEGIN
+        POPUP "Vordefinierte Zeitformate"
+        BEGIN
+            MENUITEM "12:MM:SS\t%#I:%M:%S",         ID_CLOCKFORMATS_12MMSS
+            MENUITEM "12:MM am/pm\t%#I:%M %p",      ID_CLOCKFORMATS_12MMAMPM
+            MENUITEM "24MMSS\t%H%M%S",              ID_CLOCKFORMATS_24MMSS
+        END
+        POPUP "Vordefinierte Datumsformate"
+        BEGIN
+            MENUITEM "9/7/2005\t%#m/%#d/%Y",        ID_CLOCKFORMATS_MDYYYY
+            MENUITEM "2005.09.07\t%Y.%m.%d",        ID_CLOCKFORMATS_YYYYMMDD
+            MENUITEM "Mi 7 Sep\t%a %#d %b",         ID_CLOCKFORMATS_DAYDMMM
+            MENUITEM "Mittwoch, September 7, 2005\t%A, %B %#d, %Y", ID_CLOCKFORMATS_DAYMMMMDYYYY
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Kurzform Datum und Uhrzeit f¸r Zeitzone\t%c", ID_CLOCKFORMATS_SHORTDATETIME
+        MENUITEM "Langform Datum und Uhrzeit f¸r Zeitzone\t%#c", ID_CLOCKFORMATS_LONGDATETIME
+        MENUITEM SEPARATOR
+        MENUITEM "Kurzform Datum f¸r Zeitzone\t%x", ID_CLOCKFORMATS_SHORTDATE
+        MENUITEM "Langform Datum f¸r Zeitzone\t%#x", ID_CLOCKFORMATS_LONGDATE
+        MENUITEM SEPARATOR
+        MENUITEM "Uhrzeit f¸r Zeitzone\t%X",    ID_CLOCKFORMATS_TIME
+        MENUITEM SEPARATOR
+        POPUP "&Uhrzeit"
+        BEGIN
+            MENUITEM "Stunde im 24-Stunden-Format mit Null (00-23)\t%H", ID_CLOCKFORMATS_H024
+            MENUITEM "Stunde im 24-Stunden-Format ohne Null (0-23)\t%#H", ID_CLOCKFORMATS_H24
+            MENUITEM "Stunde im 12-Stunden-Format mit Null (01-12)\t%I", ID_CLOCKFORMATS_H012
+            MENUITEM "Stunde im 12-Stunden-Format ohne Null (1-12)\t%#I", ID_CLOCKFORMATS_H12
+            MENUITEM SEPARATOR
+            MENUITEM "Minute mit f¸hrender Null (00-59)\t%M", ID_CLOCKFORMATS_M0
+            MENUITEM "Minute ohne f¸hrende Null (0-59)\t%#M", ID_CLOCKFORMATS_M
+            MENUITEM SEPARATOR
+            MENUITEM "Sekunde mit f¸hrender Null (00-59)\t%S", ID_CLOCKFORMATS_S0
+            MENUITEM "Sekunde ohne f¸hrender Null (0-59)\t%#S", ID_CLOCKFORMATS_S
+            MENUITEM SEPARATOR
+            MENUITEM "Anzeige AM/PM\t%p",           ID_CLOCKFORMATS_AMPM
+            MENUITEM SEPARATOR
+            MENUITEM "Name der Zeitzone oder die Abk¸rzung\t%z", ID_CLOCKFORMATS_TZ
+        END
+        POPUP "&Datum"
+        BEGIN
+            MENUITEM "Abgek¸rzter Wochenname\t%a",  ID_CLOCKFORMATS_ABBREVIATEDWEEKDAYNAME
+            MENUITEM "Ausgeschiebener Wochenname\t%A", ID_CLOCKFORMATS_FULLWEEKDAYNAME
+            MENUITEM "Wochentag als Zahl (0-6, Sonntag is 0)\t%w", ID_CLOCKFORMATS_WEEKDAYASNUMBER
+            MENUITEM SEPARATOR
+            MENUITEM "Abgek¸rzter Monatsname\t%b",  ID_CLOCKFORMATS_ABBREVIATEDMONTHNAME
+            MENUITEM "Ausgeschriebener Monatsname\t%B", ID_CLOCKFORMATS_FULLMONTHNAME
+            MENUITEM "Monat mit f¸hrender Null (01-12)\t%m", ID_CLOCKFORMATS_MONTH0
+            MENUITEM "Monat ohne f¸hrende Null (1-12)\t%#m", ID_CLOCKFORMATS_MONTH
+            MENUITEM SEPARATOR
+            MENUITEM "Tag mit f¸hrender Null(01-31)\t%d", ID_CLOCKFORMATS_D0
+            MENUITEM "Tag ohne f¸hrende Null (1-31)\t%#d", ID_CLOCKFORMATS_D
+            MENUITEM SEPARATOR
+            MENUITEM "Jahr ohne Jahrhundert mit f¸hrender Null (00-99)\t%y", ID_CLOCKFORMATS_YEARWITHOUTCENTURY0
+            MENUITEM "Jahr ohne Jahrhundert ohne f¸hrende Null (0-99)\t%#y", ID_CLOCKFORMATS_YEARWITHOUTCENTURY
+            MENUITEM "Jahr mit Jahrhundert mit f¸hrender Null\t%Y", ID_CLOCKFORMATS_YEARWITHCENTURY0
+            MENUITEM "Jahr mit Jahrhundert ohne f¸hrende Null\t%#Y", ID_CLOCKFORMATS_YEARWITHCENTURY
+            MENUITEM SEPARATOR
+            MENUITEM "Tag des Jahres mit f¸hrender Null (001-366)\t%j", ID_CLOCKFORMATS_YEARDAY0
+            MENUITEM "Tag des Jahres ohne f¸hrende Null (1-366)\t%#j", ID_CLOCKFORMATS_YEARDAY
+            MENUITEM SEPARATOR
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag mit f¸hrender Null (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag ohne f¸hrende Null (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag mit f¸hrender Null (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag ohne f¸hrende Null (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Prozentzeichen (%)\t%%",      ID_CLOCKFORMATS_PERCENTSIGN
+        MENUITEM "Zeilenumbruch\t\\n",          ID_CLOCKFORMATS_LINESEPARATOR
+    END
+END
+
+IDR_DESKBAND MENU 
+BEGIN
+    POPUP "Kontext"
+    BEGIN
+        MENUITEM "&12noon Homepage",            ID_PRODUCTS
+        MENUITEM "&Hilfe",                      ID_MYHELP
+        MENUITEM "&‹ber",                       ID_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "Anzeige &Konfigurieren",      ID_CLOCK_OPTIONS
+        MENUITEM "&Datum/Uhrzeit einstellen",   ID_CLOCK_ADJUSTDATETIME
+        MENUITEM SEPARATOR
+        MENUITEM "Zeige &Heute",                ID_CAL_SHOW_TODAY, CHECKED
+        MENUITEM "Zeige Kalender&wochen",       ID_CAL_SHOWWEEKNUMS
+        MENUITEM "letzte &Position merken",     ID_CAL_SAVELASTPOS
+        MENUITEM "letzte &Grˆﬂe merken",        ID_CAL_SAVELASTSIZE
+        MENUITEM "Kalender &Schriftart setzen", ID_CAL_SELECTFONT
+        MENUITEM SEPARATOR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_BAND_ENABLE DIALOGEX 0, 0, 296, 201
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "12noon Timekeeper"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LTEXT           "12noon Timekeeper zeigt Datum und Uhrzeit in der Taskbar in einem selbstdifinierbaren Format an. In einem eigenen Fenster kann ein skalierbarer Kalender angezeigt werden.",IDC_STATIC,8,4,280,24
+    CONTROL         112,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,4,32,288,112
+    LTEXT           "Nach schlieﬂen dieses Fensters wird Timekeeper durch klicken auf eine freie Stelle in der Taskbar und Auswahl der Men¸s 'Symbolleisten' -> '12noon Timekeeper' aktiviert.",IDC_STATIC,8,148,280,24
+    DEFPUSHBUTTON   "schlieﬂen",IDOK,123,180,50,14
+END
+
+IDD_CONFIGURE DIALOGEX 0, 0, 248, 141
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ansicht konfigurieren"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "<sample>",IDC_SAMPLE,8,8,232,28,SS_CENTERIMAGE | SS_ENDELLIPSIS,WS_EX_STATICEDGE
+    LTEXT           "&Format:",IDC_STATIC,8,48,58,8
+    EDITTEXT        IDC_FORMAT,72,44,92,14,ES_AUTOHSCROLL
+    PUSHBUTTON      ">",IDC_FORMATS,164,44,11,14,BS_BITMAP
+    LTEXT           "&Ausrichtung:",IDC_STATIC,8,68,58,8
+    COMBOBOX        IDC_ALIGNMENT,72,64,104,60,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Textfarbe:",IDC_STATIC,8,88,58,8
+    LTEXT           "",IDC_COLOR_TEXT_SWATCH,72,84,104,12,SS_NOTIFY,WS_EX_STATICEDGE
+    LTEXT           "Hintergrund:",IDC_STATIC,8,108,58,8
+    LTEXT           "",IDC_COLOR_BG_SWATCH,72,104,104,12,SS_NOTIFY,WS_EX_STATICEDGE
+    CONTROL         "&Hintergrund transparent",IDC_TRANSPARENT_BG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,124,95,10
+    DEFPUSHBUTTON   "OK",IDOK,190,44,50,14
+    PUSHBUTTON      "abbrechen",IDCANCEL,190,61,50,14
+    PUSHBUTTON      "&Schriftart",IDC_FONT,190,78,50,14
+    PUSHBUTTON      "Stan&dard",IDC_DEFAULT,190,95,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_BAND_ENABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_CONFIGURE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 241
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 134
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_HELP_FILE           "Timekeeper.htm"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_INI_DEBUG           "Debug"
+    IDS_INI_SHOW_HELP       "ShowHelp"
+    IDS_INI_SECTION_CLOCK   "Clock"
+    IDS_INI_IDEAL_CX        "IdealCX"
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_DESKBAND            "Timekeeper\n&12noon Timekeeper"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_INI_IDEAL_CY        "IdealCY"
+    IDS_INI_COLOR_TEXT      "ColorText"
+    IDS_INI_COLOR_BG        "ColorBG"
+    IDS_INI_CLOCK_FORMAT    "Format"
+    IDS_INI_COLOR_BG_TRANSPARENT "ColorBGTransparent"
+    IDS_INI_COLOR_TEXT_DEFAULT "ColorTextDefault"
+    IDS_INI_COLOR_BG_DEFAULT "ColorBgDefault"
+    IDS_INI_CLOCK_FONT      "Font"
+    IDS_INI_ALIGNMENT       "Alignment"
+    IDS_INI_CLOCK_FONT_DEFAULT "FontDefault"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Timekeeper"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ALIGN_LEFT          "links"
+    IDS_ALIGN_CENTER        "zentriert"
+    IDS_ALIGN_RIGHT         "rechts"
+END
+
+#endif    // German (Neutral) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_DESKBAND MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&12noon Web Site",            ID_PRODUCTS
+        MENUITEM "&Help",                       ID_MYHELP
+        MENUITEM "&About",                      ID_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "Confi&gure Display",          ID_CLOCK_OPTIONS
+        MENUITEM "&Adjust Date/Time",           ID_CLOCK_ADJUSTDATETIME
+        MENUITEM SEPARATOR
+        MENUITEM "Show &Today",                 ID_CAL_SHOW_TODAY, CHECKED
+        MENUITEM "Show Week &Numbers",          ID_CAL_SHOWWEEKNUMS
+        MENUITEM "Remember Last &Position",     ID_CAL_SAVELASTPOS
+        MENUITEM "Remember Last &Size",         ID_CAL_SAVELASTSIZE
+        MENUITEM "Select Calendar &Font",       ID_CAL_SELECTFONT
+        MENUITEM SEPARATOR
+    END
+END
+
+IDM_FORMATS MENU 
+BEGIN
+    POPUP "Clock Formats"
+    BEGIN
+        POPUP "Pre-defined time formats"
+        BEGIN
+            MENUITEM "12:MM:SS\t%#I:%M:%S",         ID_CLOCKFORMATS_12MMSS
+            MENUITEM "12:MM am/pm\t%#I:%M %p",      ID_CLOCKFORMATS_12MMAMPM
+            MENUITEM "24MMSS\t%H%M%S",              ID_CLOCKFORMATS_24MMSS
+        END
+        POPUP "Pre-defined date formats"
+        BEGIN
+            MENUITEM "9/7/2005\t%#m/%#d/%Y",        ID_CLOCKFORMATS_MDYYYY
+            MENUITEM "2005.09.07\t%Y.%m.%d",        ID_CLOCKFORMATS_YYYYMMDD
+            MENUITEM "Wed 7 Sep\t%a %#d %b",        ID_CLOCKFORMATS_DAYDMMM
+            MENUITEM "Wednesday, September 7, 2005\t%A, %B %#d, %Y", ID_CLOCKFORMATS_DAYMMMMDYYYY
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Short date and time format for locale\t%c", ID_CLOCKFORMATS_SHORTDATETIME
+        MENUITEM "Long date and time format for locale\t%#c", ID_CLOCKFORMATS_LONGDATETIME
+        MENUITEM SEPARATOR
+        MENUITEM "Short date format for locale\t%x", ID_CLOCKFORMATS_SHORTDATE
+        MENUITEM "Long date format for locale\t%#x", ID_CLOCKFORMATS_LONGDATE
+        MENUITEM SEPARATOR
+        MENUITEM "Time format for current locale\t%X", ID_CLOCKFORMATS_TIME
+        MENUITEM SEPARATOR
+        POPUP "&Time"
+        BEGIN
+            MENUITEM "Hour in 24-hour format with zero (00-23)\t%H", ID_CLOCKFORMATS_H024
+            MENUITEM "Hour in 24-hour format without zero (0-23)\t%#H", ID_CLOCKFORMATS_H24
+            MENUITEM "Hour in 12-hour format with zero (01-12)\t%I", ID_CLOCKFORMATS_H012
+            MENUITEM "Hour in 12-hour format without zero (1-12)\t%#I", ID_CLOCKFORMATS_H12
+            MENUITEM SEPARATOR
+            MENUITEM "Minute with leading zero (00-59)\t%M", ID_CLOCKFORMATS_M0
+            MENUITEM "Minute without leading zero (0-59)\t%#M", ID_CLOCKFORMATS_M
+            MENUITEM SEPARATOR
+            MENUITEM "Second with leading zero (00-59)\t%S", ID_CLOCKFORMATS_S0
+            MENUITEM "Second without leading zero (0-59)\t%#S", ID_CLOCKFORMATS_S
+            MENUITEM SEPARATOR
+            MENUITEM "Locale's A.M/P.M. indicator\t%p", ID_CLOCKFORMATS_AMPM
+            MENUITEM SEPARATOR
+            MENUITEM "Time zone name or abbreviation\t%z", ID_CLOCKFORMATS_TZ
+        END
+        POPUP "&Date"
+        BEGIN
+            MENUITEM "Abbreviated weekday name\t%a", ID_CLOCKFORMATS_ABBREVIATEDWEEKDAYNAME
+            MENUITEM "Full weekday name\t%A",       ID_CLOCKFORMATS_FULLWEEKDAYNAME
+            MENUITEM "Weekday as number (0-6, Sunday is 0)\t%w", ID_CLOCKFORMATS_WEEKDAYASNUMBER
+            MENUITEM SEPARATOR
+            MENUITEM "Abbreviated month name\t%b",  ID_CLOCKFORMATS_ABBREVIATEDMONTHNAME
+            MENUITEM "Full month name\t%B",         ID_CLOCKFORMATS_FULLMONTHNAME
+            MENUITEM "Month (01-12)\t%m",           ID_CLOCKFORMATS_MONTH0
+            MENUITEM "Month (1-12)\t%#m",           ID_CLOCKFORMATS_MONTH
+            MENUITEM SEPARATOR
+            MENUITEM "Date with leading zero (01-31)\t%d", ID_CLOCKFORMATS_D0
+            MENUITEM "Date without leading zero (1-31)\t%#d", ID_CLOCKFORMATS_D
+            MENUITEM SEPARATOR
+            MENUITEM "Year without century with leading zero (00-99)\t%y", ID_CLOCKFORMATS_YEARWITHOUTCENTURY0
+            MENUITEM "Year without century without leading zero (0-99)\t%#y", ID_CLOCKFORMATS_YEARWITHOUTCENTURY
+            MENUITEM "Year with century with leading zero\t%Y", ID_CLOCKFORMATS_YEARWITHCENTURY0
+            MENUITEM "Year with century without leading zero\t%#Y", ID_CLOCKFORMATS_YEARWITHCENTURY
+            MENUITEM SEPARATOR
+            MENUITEM "Day of year with leading zero (001-366)\t%j", ID_CLOCKFORMATS_YEARDAY0
+            MENUITEM "Day of year without leading zero (1-366)\t%#j", ID_CLOCKFORMATS_YEARDAY
+            MENUITEM SEPARATOR
+            MENUITEM "Week of year with Sunday as first day of week (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
+            MENUITEM "Week of year with Sunday as first day of week (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY
+            MENUITEM "Week of year with Monday as first day of week (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
+            MENUITEM "Week of year with Monday as first day of week (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Percent sign (%)\t%%",        ID_CLOCKFORMATS_PERCENTSIGN
+        MENUITEM "Line separator\t\\n",         ID_CLOCKFORMATS_LINESEPARATOR
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_BAND_ENABLE DIALOGEX 0, 0, 296, 201
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "12noon Timekeeper"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LTEXT           "12noon Timekeeper displays the current date and time on your Windows task bar in a format you can customize. It can also display a separate calendar window.",IDC_STATIC,8,4,280,24
+    CONTROL         112,IDC_STATIC,"Static",SS_BITMAP | SS_SUNKEN,4,32,288,112
+    LTEXT           "After you close this window, you can enable Timekeeper by right-clicking in an empty area of the taskbar, selecting the Toolbars command, and then clicking ""12noon Timekeeper.""",IDC_STATIC,8,148,280,24
+    DEFPUSHBUTTON   "Close",IDOK,123,180,50,14
+END
+
+IDD_CONFIGURE DIALOGEX 0, 0, 248, 141
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Configure Clock Display"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "<sample>",IDC_SAMPLE,8,8,232,28,SS_CENTERIMAGE | SS_ENDELLIPSIS,WS_EX_STATICEDGE
+    LTEXT           "&Format:",IDC_STATIC,8,48,58,8
+    EDITTEXT        IDC_FORMAT,72,44,92,14,ES_AUTOHSCROLL
+    PUSHBUTTON      ">",IDC_FORMATS,164,44,11,14,BS_BITMAP
+    LTEXT           "&Alignment:",IDC_STATIC,8,68,58,8
+    COMBOBOX        IDC_ALIGNMENT,72,64,104,60,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Text color:",IDC_STATIC,8,88,58,8
+    LTEXT           "",IDC_COLOR_TEXT_SWATCH,72,84,104,12,SS_NOTIFY,WS_EX_STATICEDGE
+    LTEXT           "Background:",IDC_STATIC,8,108,58,8
+    LTEXT           "",IDC_COLOR_BG_SWATCH,72,104,104,12,SS_NOTIFY,WS_EX_STATICEDGE
+    CONTROL         "&Transparent background",IDC_TRANSPARENT_BG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,124,95,10
+    DEFPUSHBUTTON   "OK",IDOK,190,44,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,190,61,50,14
+    PUSHBUTTON      "F&ont",IDC_FONT,190,78,50,14
+    PUSHBUTTON      "&Default",IDC_DEFAULT,190,95,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_BAND_ENABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_CONFIGURE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 241
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 134
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""MyMFC/pmsres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "//#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#include ""MyMFC/pmsres.rc""\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,32,117,0
+ PRODUCTVERSION 1,32,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "12noon"
+            VALUE "FileDescription", "12noon Timekeeper"
+            VALUE "FileVersion", "1.32.0117"
+            VALUE "InternalName", "Timekeeper"
+            VALUE "LegalCopyright", "© 2004-2007 12noon, Stefan K.S. Tucker"
+            VALUE "LegalTrademarks", "12noon"
+            VALUE "OriginalFilename", "Timekeeper.dll"
+            VALUE "ProductName", "12noon Timekeeper"
+            VALUE "ProductVersion", "1.32"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_DESKBAND            REGISTRY                "..\\Library\\COMtoys\\BandObj.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ABOUT               BITMAP                  "res\\company_logo.bmp"
+IDB_BAND_ENABLE         BITMAP                  "res\\BandEnable.bmp"
+IDB_ARROW_R             BITMAP                  "res\\arrow_r.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\datetime.ico"
+IDI_ABOUT               ICON                    "res\\about.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_HELP_FILE           "Timekeeper.htm"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_INI_DEBUG           "Debug"
+    IDS_INI_SHOW_HELP       "ShowHelp"
+    IDS_INI_SECTION_CLOCK   "Clock"
+    IDS_INI_IDEAL_CX        "IdealCX"
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_DESKBAND            "Timekeeper\n&12noon Timekeeper"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_INI_IDEAL_CY        "IdealCY"
+    IDS_INI_COLOR_TEXT      "ColorText"
+    IDS_INI_COLOR_BG        "ColorBG"
+    IDS_INI_CLOCK_FORMAT    "Format"
+    IDS_INI_COLOR_BG_TRANSPARENT "ColorBGTransparent"
+    IDS_INI_COLOR_TEXT_DEFAULT "ColorTextDefault"
+    IDS_INI_COLOR_BG_DEFAULT "ColorBgDefault"
+    IDS_INI_CLOCK_FONT      "Font"
+    IDS_INI_ALIGNMENT       "Alignment"
+    IDS_INI_CLOCK_FONT_DEFAULT "FontDefault"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Timekeeper"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ALIGN_LEFT          "Left"
+    IDS_ALIGN_CENTER        "Center"
+    IDS_ALIGN_RIGHT         "Right"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "afxres.rc"         // Standard components
+//#include "afxprint.rc"       // printing/print preview resources
+#include "MyMFC/pmsres.rc"
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
