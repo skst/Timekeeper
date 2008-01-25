@@ -25,8 +25,11 @@ ConfigureDlg::ConfigureDlg(CWnd* pParent)
    _menuBar.LoadMenu(IDM_FORMATS);
    _pMenuFormats = _menuBar.GetSubMenu(0);
 
+	_secondsInterval = 0;
+
    LoadOptions();
 }
+
 
 /*
    Can't do this in the ctor because the app name isn't set yet
@@ -35,8 +38,7 @@ void ConfigureDlg::LoadOptions()
 {
    ASSERT(_tcslen(::AfxGetAppName()) > 0);
 
-   // default to short date/time format for locale
-   _strFormat = ::AfxGetApp()->GetProfileString(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_CLOCK_FORMAT)), _T("%c"));
+	LoadFormat();
 
    _bFontDefault = !!::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_CLOCK_FONT_DEFAULT)), true);
 
@@ -94,6 +96,23 @@ void ConfigureDlg::LoadOptions()
    _bColorTransparentBG = !!::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG_TRANSPARENT)), true);
 
    _eAlignmentStyle = (Alignment) ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), SS_LEFT);
+
+	_secondsInterval = ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(_T("ReloadIntervalSeconds")), 0);
+
+	/*
+		monitor the registry key for a change to the display format
+	*/
+	HKEY hAppKey = ::AfxGetApp()->GetAppRegistryKey();
+	VERIFY(::RegOpenKeyEx(hAppKey, CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), NULL, KEY_NOTIFY, &_hKeyClock) == ERROR_SUCCESS);
+	::RegCloseKey(hAppKey);
+	VERIFY(::RegNotifyChangeKeyValue(_hKeyClock, FALSE /*watch subtree*/, REG_NOTIFY_CHANGE_LAST_SET, _evtNotifyClock, TRUE /*asynch*/) == ERROR_SUCCESS);
+}
+
+
+void ConfigureDlg::LoadFormat()
+{
+   // default to short date/time format for locale
+   _strFormat = ::AfxGetApp()->GetProfileString(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_CLOCK_FORMAT)), _T("%c"));
 }
 
 
@@ -253,6 +272,9 @@ void ConfigureDlg::OnOK()
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG)), _crColorBG);
 
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), _eAlignmentStyle);
+
+	// Since this isn't set in the dialog (yet), instead of saving a new value to the Registry, load a (possibly) new one
+	_secondsInterval = ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(_T("ReloadIntervalSeconds")), 0);
 }
 
 
@@ -421,6 +443,7 @@ void ConfigureDlg::FormatSample()
 	They always set the isdst member to zero, which means that even when DST is
 	in effect, the %z format specifier will return Standard Time. Duh.
 */
+// Copied (and modified) from COleDateTime::Format(LPCTSTR pFormat):
 inline CString My_COleDateTime_Format(const COleDateTime& odt, LPCTSTR pFormat)
 {
 	ATLENSURE_THROW(pFormat != NULL, E_INVALIDARG);
@@ -456,6 +479,13 @@ inline CString My_COleDateTime_Format(const COleDateTime& odt, LPCTSTR pFormat)
 	tmTemp.tm_year	= ud.st.wYear - 1900;
 	tmTemp.tm_wday	= ud.st.wDayOfWeek;
 	tmTemp.tm_yday	= ud.wDayOfYear - 1;
+	/*
+		mktime() and tm_isdst:
+		Zero (0) to indicate that standard time is in effect.
+		A value greater than 0 to indicate that daylight savings time is in effect.
+		A value less than zero to have the C run-time library code compute whether
+		standard time or daylight savings time is in effect.
+	*/
 //	tmTemp.tm_isdst	= 0;
 	tmTemp.tm_isdst	= -1;	// instruct Windows to figure out DST
 	mktime(&tmTemp);			// this should only set DST correctly
@@ -534,7 +564,16 @@ static void _invalid_param_handler(const wchar_t *expression,
 */
 CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl)
 {
-   return UpdateControlText(ctl, _strFormat, COleDateTime::GetCurrentTime());
+	// if a value in the monitored registry key has changed, load the format
+	if (::WaitForSingleObject(_evtNotifyClock, 0) == WAIT_OBJECT_0)
+	{
+		LoadFormat();
+
+		// monitor the registry key again
+		VERIFY(::RegNotifyChangeKeyValue(_hKeyClock, FALSE /*watch subtree*/, REG_NOTIFY_CHANGE_LAST_SET, _evtNotifyClock, TRUE /*asynch*/) == ERROR_SUCCESS);
+	}
+
+	return UpdateControlText(ctl, _strFormat, COleDateTime::GetCurrentTime());
 }
 CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szFormat, const COleDateTime& dt)
 {

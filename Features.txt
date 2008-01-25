@@ -6,7 +6,6 @@ task bar in your custom format.
 
 .: Features :.
 
-Primary click on USR button to display About window.
 Primary click on clock to display calendar.
 Secondary click on clock to display context menu.
 
@@ -43,6 +42,18 @@ Calendar options include:
    Show week numbers
    Remember calendar's position
    Remember calendar's size
+
+
+.: Advanced Features:.
+
+Timekeeper reloads the display format when it notices that it's changed.
+You can use this to display your own dynamic value on the desk band.
+
+	HKCU\12noon\Timekeeper\Clock\
+			Format [string] = Display format
+
+You can set this data value to any text you'd like to have displayed on the
+Timekeeper's desk band. Use it to display the weather, a reminder, whatever.
 
 
 .: Known Issues :.

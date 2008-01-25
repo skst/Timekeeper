@@ -570,15 +570,19 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\Library\COMtoys\BandObj.rgs"
-			>
-		</File>
-		<File
 			RelativePath="..\common\COMtoys\BandObj.rgs"
 			>
 		</File>
 		<File
+			RelativePath="..\Library\COMtoys\BandObj.rgs"
+			>
+		</File>
+		<File
 			RelativePath="Features.txt"
+			>
+		</File>
+		<File
+			RelativePath=".\Timekeeper ToDo.txt"
 			>
 		</File>
 	</Files>

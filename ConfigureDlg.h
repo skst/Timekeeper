@@ -36,11 +36,18 @@ protected:
    CMenu _menuBar;
    CMenu *_pMenuFormats;
 
+	UINT _secondsInterval;
+	HKEY _hKeyClock;
+	CEvent _evtNotifyClock;
+
 public:
 	ConfigureDlg(CWnd* pParent);
-   virtual ~ConfigureDlg() {}
+   virtual ~ConfigureDlg()
+	{
+		if (_hKeyClock != NULL)
+			::RegCloseKey(_hKeyClock);
+	}
 
-   void LoadOptions();
    CString UpdateControlText(MyMFC::StaticColor& ctl);
 
    const LOGFONT& GetFont() const { return _lfFontClock; }
@@ -54,6 +61,9 @@ public:
 
    Alignment GetAlignmentStyle() const { return _eAlignmentStyle; }
 
+	void LoadFormat();
+	UINT GetReloadIntervalSeconds() const { return _secondsInterval; }
+
 protected:
 	enum { IDD = IDD_CONFIGURE };
 
@@ -63,6 +73,7 @@ protected:
    static UINT_PTR CALLBACK FctHookFontDlg(HWND hdlg, UINT uiMsg, WPARAM wParam, LPARAM lParam);
    void OnFontApply(const LOGFONT& lf);
 
+   void LoadOptions();
    static CString UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szFormat, const COleDateTime& dt);
    void FormatSample();
    void FormatStaticControl(MyMFC::StaticColor& ctl, const Alignment& eAlignmentStyle, const bool bColorTransparentBG);

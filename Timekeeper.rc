@@ -463,8 +463,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,32,117,0
- PRODUCTVERSION 1,32,0,0
+ FILEVERSION 1,33,121,0
+ PRODUCTVERSION 1,33,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -481,13 +481,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.32.0117"
+            VALUE "FileVersion", "1.33.0121"
             VALUE "InternalName", "Timekeeper"
-            VALUE "LegalCopyright", "© 2004-2007 12noon, Stefan K.S. Tucker"
+            VALUE "LegalCopyright", "© 2004-2008 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"
             VALUE "OriginalFilename", "Timekeeper.dll"
             VALUE "ProductName", "12noon Timekeeper"
-            VALUE "ProductVersion", "1.32"
+            VALUE "ProductVersion", "1.33"
         END
     END
     BLOCK "VarFileInfo"

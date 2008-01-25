@@ -1,6 +1,31 @@
 //---------------------------------------------------------------------------
-// (c) 2006 12noon, Stefan K. S. Tucker
+// (c) 2006-2008 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
+
+/*
+	KNOWN ISSUE
+
+	Right-click on Command Console shortcut in Quick Launch bar gives
+	this error when using the Debug build. Ignore seemed ok.
+	It's the result of GetMenu() returning NULL and wincore.cpp
+	using ENSURE() to assert that it's not NULL.
+
+	---------------------------
+	Microsoft Visual C++ Debug Library
+	---------------------------
+	Debug Assertion Failed!
+
+	Program: C:\WINDOWS\Explorer.EXE
+	File: f:\sp\vctools\vc7libs\ship\atlmfc\src\mfc\wincore.cpp
+	Line: 1325
+
+	For information on how your program can cause an assertion failure, see the Visual C++ documentation on asserts.
+
+	(Press Retry to debug the application)
+	---------------------------
+	Abort   Retry   Ignore   
+	---------------------------
+*/
 
 #include "StdAfx.h"
 #include <afxdtctl.h>   // CMonthCalCtrl
@@ -148,7 +173,8 @@ CMyDeskBand::CMyDeskBand()
    icc.dwICC = ICC_DATE_CLASSES;
    ::InitCommonControlsEx(&icc);
 
-   _idTimer = 0;
+   _idTimerUpdateDisplay = 0;
+	_idTimerReloadFormat = 0;
 
    /*
       Load options
@@ -362,9 +388,16 @@ else
    FormatClock();
 
 //TODO: if seconds aren't displaying, should we set a 1-minute timer (and then set it again--to keep it accurate, like Alarm++)
-   _idTimer = SetTimer(1, 1000, NULL);    // refresh every second
+   _idTimerUpdateDisplay = SetTimer(rand(), 1000, NULL);    // refresh every second
 
-   // set up dynamic tooltip
+	/*
+		Possibly start reload-format timer
+	*/
+	const UINT secondsInterval = _dlgConfiguration.GetReloadIntervalSeconds();
+	if ((secondsInterval > 0) && (secondsInterval <= 6000))
+		_idTimerReloadFormat = SetTimer(rand() /*id*/, 1000 * secondsInterval, NULL);
+
+	// set up dynamic tooltip
    _tips.AddToolTextDynamicTrack(_ctlClock, GetSafeHwnd());
 
 // We need to set these here (in addition to or instead of CMyDeskBand() so that it's not too wide)
@@ -378,7 +411,18 @@ NotifyBandInfoChanged();
 void CMyDeskBand::OnDestroy()
 {
 	TRACE(__FUNCTION__ _T("\n"));
-   KillTimer(_idTimer);
+
+	if (_idTimerReloadFormat != 0)
+	{
+		KillTimer(_idTimerReloadFormat);
+		_idTimerReloadFormat = 0;
+	}
+
+	if (_idTimerUpdateDisplay != 0)
+	{
+		KillTimer(_idTimerUpdateDisplay);
+		_idTimerUpdateDisplay = 0;
+	}
 
    /*
       If the band is closed, the calendar stays up. seems we have to do this.
@@ -686,15 +730,20 @@ void CMyDeskBand::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 	__super::OnSettingChange(uFlags, lpszSection);
 
 // BUG: It seems that we need to force a reload of date/time format in Regional Settings. How?
-	OnTimer(_idTimer);
+	OnTimer(_idTimerUpdateDisplay);
 }
 
 
 void CMyDeskBand::OnTimer(UINT_PTR idEvent)
 {
-   UNUSED(idEvent);
-   ASSERT(idEvent == _idTimer);
+	if (idEvent == _idTimerUpdateDisplay)
+		UpdateDisplay();
+	else if (idEvent == _idTimerReloadFormat)
+		_dlgConfiguration.LoadFormat();
+}
 
+void CMyDeskBand::UpdateDisplay()
+{
    UpdateClockText();
 
    /*
@@ -759,7 +808,7 @@ BOOL CMyDeskBand::OnToolTipNotify(UINT id, NMHDR *pNMHDR, LRESULT *pResult)
 
 void CMyDeskBand::OnClockOptions()
 {
-   if (_dlgConfiguration.DoModal() != IDOK)
+	if (_dlgConfiguration.DoModal() != IDOK)
       return;
 
    // ensure the font's set
@@ -768,11 +817,24 @@ void CMyDeskBand::OnClockOptions()
    UpdateClockText();
 	TRACE("New text size: %dx%d\n", _sizeClockText.cx, _sizeClockText.cy);
 
-//TODO: if the timer is more than 1-second, we probably want to call it explicitly here. or make the format/set combo a function and call THAT.
+//TODO: if the timer is longer than 1-second, we probably want to call it explicitly here. or make the format/set combo a function and call THAT.
 
    // THEN force the band to resize
    SetBandSizes();
    NotifyBandInfoChanged();
+
+	/*
+		Kill any reload-format timer that may be running.
+		Then, maybe, restart it (with a different interval?).
+	*/
+	if (_idTimerReloadFormat != 0)
+	{
+		KillTimer(_idTimerReloadFormat);
+		_idTimerReloadFormat = 0;
+	}
+	const UINT secondsInterval = _dlgConfiguration.GetReloadIntervalSeconds();
+	if ((secondsInterval > 0) && (secondsInterval <= 6000))
+		_idTimerReloadFormat = SetTimer(rand() /*id*/, 1000 * secondsInterval, NULL);
 }
 
 void CMyDeskBand::FormatClock()
@@ -787,7 +849,7 @@ void CMyDeskBand::FormatClock()
    */
    /*
       Can't remember the CFont* because that's a direct ptr
-      to the handle map where the controls CFont is stored.
+      to the handle map where the control's CFont is stored.
       So when we later use _fontClock.CreateFontIndirect(),
       it changes the HFONT the control's GetFont() returns.
       Short story: We save the HFONT for fool-proof future

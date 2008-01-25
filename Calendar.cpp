@@ -99,8 +99,8 @@ bool CalendarWindow::Create(const int xPos, const int yPos, const int nNumMonths
    {
       return false;
    }
-//delme?   SetDlgCtrlID(IDC_CALENDAR);
-   if (!bShowToday)
+
+	if (!bShowToday)
       TodayHide();
    if (bShowWeekNums)
       WeekNumbersShow();
@@ -257,6 +257,9 @@ void CalendarWindow::_WeekNumbersShow(const bool b)
 
    if (GetSafeHwnd() != NULL)
    {
+		/*
+			From MSDN: Week 1 is the first week with 4 or more days.
+		*/
       if (_bShowWeekNums)
          ModifyStyle(0, MCS_WEEKNUMBERS);
       else
