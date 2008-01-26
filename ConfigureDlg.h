@@ -2,6 +2,7 @@
 
 #include "MyMFC/pmslib.h"
 #include "MyMFC/StaticColor.h"
+#include "MyMFC/RegistryMonitor.h"
 
 #include "resource.h"
 
@@ -36,8 +37,8 @@ protected:
    CMenu _menuBar;
    CMenu *_pMenuFormats;
 
-	HKEY _hKeyClock;
-	CEvent _evtNotifyClock;
+	RegistryMonitor _regmonClock;
+
 
    MyMFC::StaticColor _ctlSample;
 
@@ -59,7 +60,7 @@ protected:
 
 public:
 	ConfigureDlg(CWnd* pParent);
-   virtual ~ConfigureDlg();
+	virtual ~ConfigureDlg() {}
 
    CString UpdateControlText(MyMFC::StaticColor& ctl);
 

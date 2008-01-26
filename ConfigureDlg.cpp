@@ -25,16 +25,7 @@ ConfigureDlg::ConfigureDlg(CWnd* pParent)
    _menuBar.LoadMenu(IDM_FORMATS);
    _pMenuFormats = _menuBar.GetSubMenu(0);
 
-	_hKeyClock = NULL;
-
    LoadOptions();
-}
-
-
-ConfigureDlg::~ConfigureDlg()
-{
-	if (_hKeyClock != NULL)
-		::RegCloseKey(_hKeyClock);
 }
 
 
@@ -108,9 +99,8 @@ void ConfigureDlg::LoadOptions()
 		monitor the registry key for a change to the display format
 	*/
 	HKEY hAppKey = ::AfxGetApp()->GetAppRegistryKey();
-	VERIFY(::RegOpenKeyEx(hAppKey, CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), NULL, KEY_NOTIFY, &_hKeyClock) == ERROR_SUCCESS);
+	_regmonClock.Monitor(hAppKey, CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)));
 	::RegCloseKey(hAppKey);
-	VERIFY(::RegNotifyChangeKeyValue(_hKeyClock, FALSE /*watch subtree*/, REG_NOTIFY_CHANGE_LAST_SET, _evtNotifyClock, TRUE /*asynch*/) == ERROR_SUCCESS);
 }
 
 
@@ -567,13 +557,8 @@ static void _invalid_param_handler(const wchar_t *expression,
 CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl)
 {
 	// if there's a change in the monitored registry key, re-load the format
-	if (::WaitForSingleObject(_evtNotifyClock, 0) == WAIT_OBJECT_0)
-	{
+	if (_regmonClock.IsModified())
 		LoadFormat();
-
-		// monitor the registry key again
-		VERIFY(::RegNotifyChangeKeyValue(_hKeyClock, FALSE /*watch subtree*/, REG_NOTIFY_CHANGE_LAST_SET, _evtNotifyClock, TRUE /*asynch*/) == ERROR_SUCCESS);
-	}
 
 	return UpdateControlText(ctl, _strFormat, COleDateTime::GetCurrentTime());
 }
