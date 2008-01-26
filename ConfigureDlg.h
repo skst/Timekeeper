@@ -36,17 +36,30 @@ protected:
    CMenu _menuBar;
    CMenu *_pMenuFormats;
 
-	UINT _secondsInterval;
 	HKEY _hKeyClock;
 	CEvent _evtNotifyClock;
 
+   MyMFC::StaticColor _ctlSample;
+
+   CEdit _ctlFormat;
+   CString _strFormat;  // format of date/time/whatever displayed in band (in strftime() format)
+
+	MyMFC::StaticColor _ctlSwatchText;
+	MyMFC::StaticColor _ctlSwatchBG;
+
+   bool _bColorDefaultText;
+   COLORREF _crColorText;
+
+   bool _bColorTransparentBG;
+   bool _bColorDefaultBG;
+   COLORREF _crColorBG;
+
+   PMS::CBox<CComboBox,Alignment> _ctlAlignment;
+   Alignment _eAlignmentStyle;      // SS_LEFT, SS_CENTER, SS_RIGHT
+
 public:
 	ConfigureDlg(CWnd* pParent);
-   virtual ~ConfigureDlg()
-	{
-		if (_hKeyClock != NULL)
-			::RegCloseKey(_hKeyClock);
-	}
+   virtual ~ConfigureDlg();
 
    CString UpdateControlText(MyMFC::StaticColor& ctl);
 
@@ -62,7 +75,6 @@ public:
    Alignment GetAlignmentStyle() const { return _eAlignmentStyle; }
 
 	void LoadFormat();
-	UINT GetReloadIntervalSeconds() const { return _secondsInterval; }
 
 protected:
 	enum { IDD = IDD_CONFIGURE };
@@ -92,22 +104,4 @@ protected:
    afx_msg void OnBnClickedTransparentBg();
    afx_msg void OnBnClickedFormats();
    afx_msg void OnClockFormats();
-
-   MyMFC::StaticColor _ctlSample;
-
-   CEdit _ctlFormat;
-   CString _strFormat;  // format of date/time/whatever displayed in band (in strftime() format)
-
-	MyMFC::StaticColor _ctlSwatchText;
-	MyMFC::StaticColor _ctlSwatchBG;
-
-   bool _bColorDefaultText;
-   COLORREF _crColorText;
-
-   bool _bColorTransparentBG;
-   bool _bColorDefaultBG;
-   COLORREF _crColorBG;
-
-   PMS::CBox<CComboBox,Alignment> _ctlAlignment;
-   Alignment _eAlignmentStyle;      // SS_LEFT, SS_CENTER, SS_RIGHT
 };

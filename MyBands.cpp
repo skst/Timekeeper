@@ -174,7 +174,6 @@ CMyDeskBand::CMyDeskBand()
    ::InitCommonControlsEx(&icc);
 
    _idTimerUpdateDisplay = 0;
-	_idTimerReloadFormat = 0;
 
    /*
       Load options
@@ -390,13 +389,6 @@ else
 //TODO: if seconds aren't displaying, should we set a 1-minute timer (and then set it again--to keep it accurate, like Alarm++)
    _idTimerUpdateDisplay = SetTimer(rand(), 1000, NULL);    // refresh every second
 
-	/*
-		Possibly start reload-format timer
-	*/
-	const UINT secondsInterval = _dlgConfiguration.GetReloadIntervalSeconds();
-	if ((secondsInterval > 0) && (secondsInterval <= 6000))
-		_idTimerReloadFormat = SetTimer(rand() /*id*/, 1000 * secondsInterval, NULL);
-
 	// set up dynamic tooltip
    _tips.AddToolTextDynamicTrack(_ctlClock, GetSafeHwnd());
 
@@ -411,12 +403,6 @@ NotifyBandInfoChanged();
 void CMyDeskBand::OnDestroy()
 {
 	TRACE(__FUNCTION__ _T("\n"));
-
-	if (_idTimerReloadFormat != 0)
-	{
-		KillTimer(_idTimerReloadFormat);
-		_idTimerReloadFormat = 0;
-	}
 
 	if (_idTimerUpdateDisplay != 0)
 	{
@@ -737,36 +723,31 @@ void CMyDeskBand::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 void CMyDeskBand::OnTimer(UINT_PTR idEvent)
 {
 	if (idEvent == _idTimerUpdateDisplay)
-		UpdateDisplay();
-	else if (idEvent == _idTimerReloadFormat)
-		_dlgConfiguration.LoadFormat();
-}
+	{
+		UpdateClockText();
 
-void CMyDeskBand::UpdateDisplay()
-{
-   UpdateClockText();
+		/*
+			if the calendar is displayed, set the caption to the locale's long date/time
+		*/
+		if (_cal.GetSafeHwnd() != NULL)
+			_cal.SetWindowText(COleDateTime::GetCurrentTime().Format(_T("%#c")));
 
-   /*
-      if the calendar is displayed, set the caption to the locale's long date/time
-   */
-   if (_cal.GetSafeHwnd() != NULL)
-      _cal.SetWindowText(COleDateTime::GetCurrentTime().Format(_T("%#c")));
-
-   /*
-      Compute the size of the text. If it's larger than the available space, resize the band.
-   */
-   CRect rClock;
-   _ctlClock.GetClientRect(&rClock);
+		/*
+			Compute the size of the text. If it's larger than the available space, resize the band.
+		*/
+		CRect rClock;
+		_ctlClock.GetClientRect(&rClock);
 //TRACE("Compare: need(%d) to have(%d)\n", _sizeClockText.cx, rClock.Width());
-   if ((_sizeClockText.cx > rClock.Width()) || (_sizeClockText.cy > rClock.Height()))
-   {
-      TRACE("New larger size: %dx%d\n", _sizeClockText.cx, _sizeClockText.cy);
+	   if ((_sizeClockText.cx > rClock.Width()) || (_sizeClockText.cy > rClock.Height()))
+		{
+			TRACE("New larger size: %dx%d\n", _sizeClockText.cx, _sizeClockText.cy);
 //For now, we're going to auto-size the control.
 //      ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_IDEAL_CX)), _sizeClockText.cx);
 //      ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_IDEAL_CY)), _sizeClockText.cy);
 
-      SetBandSizes();
-      NotifyBandInfoChanged();
+	      SetBandSizes();
+		   NotifyBandInfoChanged();
+		}
    }
 }
 
@@ -822,19 +803,6 @@ void CMyDeskBand::OnClockOptions()
    // THEN force the band to resize
    SetBandSizes();
    NotifyBandInfoChanged();
-
-	/*
-		Kill any reload-format timer that may be running.
-		Then, maybe, restart it (with a different interval?).
-	*/
-	if (_idTimerReloadFormat != 0)
-	{
-		KillTimer(_idTimerReloadFormat);
-		_idTimerReloadFormat = 0;
-	}
-	const UINT secondsInterval = _dlgConfiguration.GetReloadIntervalSeconds();
-	if ((secondsInterval > 0) && (secondsInterval <= 6000))
-		_idTimerReloadFormat = SetTimer(rand() /*id*/, 1000 * secondsInterval, NULL);
 }
 
 void CMyDeskBand::FormatClock()

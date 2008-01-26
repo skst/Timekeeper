@@ -69,7 +69,6 @@ protected:
 #endif
 
    UINT_PTR _idTimerUpdateDisplay;
-	UINT_PTR _idTimerReloadFormat;
 
    // clock support
    MyMFC::StaticColor _ctlClock;
@@ -102,7 +101,6 @@ protected:
 //   virtual void DoThemeChanged();
 
    void SetBandSizes();
-	void UpdateDisplay();
    void UpdateClockText();
    void FormatClock();
 

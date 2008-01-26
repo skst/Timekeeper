@@ -25,9 +25,16 @@ ConfigureDlg::ConfigureDlg(CWnd* pParent)
    _menuBar.LoadMenu(IDM_FORMATS);
    _pMenuFormats = _menuBar.GetSubMenu(0);
 
-	_secondsInterval = 0;
+	_hKeyClock = NULL;
 
    LoadOptions();
+}
+
+
+ConfigureDlg::~ConfigureDlg()
+{
+	if (_hKeyClock != NULL)
+		::RegCloseKey(_hKeyClock);
 }
 
 
@@ -96,8 +103,6 @@ void ConfigureDlg::LoadOptions()
    _bColorTransparentBG = !!::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG_TRANSPARENT)), true);
 
    _eAlignmentStyle = (Alignment) ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), SS_LEFT);
-
-	_secondsInterval = ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(_T("ReloadIntervalSeconds")), 0);
 
 	/*
 		monitor the registry key for a change to the display format
@@ -272,9 +277,6 @@ void ConfigureDlg::OnOK()
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG)), _crColorBG);
 
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), _eAlignmentStyle);
-
-	// Since this isn't set in the dialog (yet), instead of saving a new value to the Registry, load a (possibly) new one
-	_secondsInterval = ::AfxGetApp()->GetProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(_T("ReloadIntervalSeconds")), 0);
 }
 
 
@@ -564,7 +566,7 @@ static void _invalid_param_handler(const wchar_t *expression,
 */
 CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl)
 {
-	// if a value in the monitored registry key has changed, load the format
+	// if there's a change in the monitored registry key, re-load the format
 	if (::WaitForSingleObject(_evtNotifyClock, 0) == WAIT_OBJECT_0)
 	{
 		LoadFormat();
