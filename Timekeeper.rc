@@ -8,7 +8,8 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #include "afxres.h"
-#include "MyMFC/pmsres.h"
+#include "MyMFC/pmsres.h"
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -91,10 +92,15 @@ BEGIN
             MENUITEM "Tag des Jahres mit führender Null (001-366)\t%j", ID_CLOCKFORMATS_YEARDAY0
             MENUITEM "Tag des Jahres ohne führende Null (1-366)\t%#j", ID_CLOCKFORMATS_YEARDAY
             MENUITEM SEPARATOR
-            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag mit führender Null (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
-            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag ohne führende Null (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY
-            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag mit führender Null (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
-            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag ohne führende Null (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag mit führender Null (01-53)\t%T", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY01
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag ohne führende Null (1-53)\t%#T", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY1
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag mit führender Null (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY00
+            MENUITEM "Kalenderwoche mit Sonntag als erstem Wochentag ohne führende Null (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
+            MENUITEM SEPARATOR
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag mit führender Null (01-53)\t%V", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY01
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag ohne führende Null (1-53)\t%#V", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY1
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag mit führender Null (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY00
+            MENUITEM "Kalenderwoche mit Montag als erstem Wochentag ohne führende Null (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
         END
         MENUITEM SEPARATOR
         MENUITEM "Prozentzeichen (%)\t%%",      ID_CLOCKFORMATS_PERCENTSIGN
@@ -341,10 +347,15 @@ BEGIN
             MENUITEM "Day of year with leading zero (001-366)\t%j", ID_CLOCKFORMATS_YEARDAY0
             MENUITEM "Day of year without leading zero (1-366)\t%#j", ID_CLOCKFORMATS_YEARDAY
             MENUITEM SEPARATOR
-            MENUITEM "Week of year with Sunday as first day of week (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
-            MENUITEM "Week of year with Sunday as first day of week (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY
-            MENUITEM "Week of year with Monday as first day of week (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
-            MENUITEM "Week of year with Monday as first day of week (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY
+            MENUITEM "Week of year with Sunday as first day of week (01-54)\t%T", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY01
+            MENUITEM "Week of year with Sunday as first day of week (1-54)\t%#T", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY1
+            MENUITEM "Week of year with Sunday as first day of week (00-53)\t%U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY00
+            MENUITEM "Week of year with Sunday as first day of week (0-53)\t%#U", ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0
+            MENUITEM SEPARATOR
+            MENUITEM "Week of year with Monday as first day of week (01-54)\t%V", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY01
+            MENUITEM "Week of year with Monday as first day of week (1-54)\t%#V", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY1
+            MENUITEM "Week of year with Monday as first day of week (00-53)\t%W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY00
+            MENUITEM "Week of year with Monday as first day of week (0-53)\t%#W", ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0
         END
         MENUITEM SEPARATOR
         MENUITEM "Percent sign (%)\t%%",        ID_CLOCKFORMATS_PERCENTSIGN
@@ -463,7 +474,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,40,122,0
+ FILEVERSION 1,40,125,0
  PRODUCTVERSION 1,40,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -481,7 +492,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.40.0122"
+            VALUE "FileVersion", "1.40.0125"
             VALUE "InternalName", "Timekeeper"
             VALUE "LegalCopyright", "© 2004-2008 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"

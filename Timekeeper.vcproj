@@ -5,9 +5,6 @@
 	Name="Timekeeper"
 	ProjectGUID="{17FFC676-A235-42AA-A838-0566BEABE3A6}"
 	RootNamespace="Timekeeper"
-	SccProjectName="&quot;$/Timekeeper&quot;, DQBAAAAA"
-	SccLocalPath="."
-	SccProvider="MSSCCI:Microsoft Visual SourceSafe"
 	Keyword="MFCProj"
 	>
 	<Platforms>
@@ -570,11 +567,11 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\common\COMtoys\BandObj.rgs"
+			RelativePath="..\Library\COMtoys\BandObj.rgs"
 			>
 		</File>
 		<File
-			RelativePath="..\Library\COMtoys\BandObj.rgs"
+			RelativePath="..\common\COMtoys\BandObj.rgs"
 			>
 		</File>
 		<File

@@ -225,10 +225,14 @@ BEGIN_MESSAGE_MAP(ConfigureDlg, CDialog)
    ON_COMMAND(ID_CLOCKFORMATS_AMPM                    , OnClockFormats)
    ON_COMMAND(ID_CLOCKFORMATS_TZ                      , OnClockFormats)
 
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY01     , OnClockFormats)
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY1      , OnClockFormats)
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY00     , OnClockFormats)
    ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY0      , OnClockFormats)
-   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_SUNDAY       , OnClockFormats)
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY01     , OnClockFormats)
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY1      , OnClockFormats)
+   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY00     , OnClockFormats)
    ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY0      , OnClockFormats)
-   ON_COMMAND(ID_CLOCKFORMATS_WEEKOFYEAR_MONDAY       , OnClockFormats)
    ON_COMMAND(ID_CLOCKFORMATS_WEEKDAYASNUMBER         , OnClockFormats)
 
    ON_COMMAND(ID_CLOCKFORMATS_PERCENTSIGN             , OnClockFormats)
@@ -491,6 +495,42 @@ inline CString My_COleDateTime_Format(const COleDateTime& odt, LPCTSTR pFormat)
 }
 
 
+/*
+	Substitute %T/%#T for one-based version of %U/%#U.
+	Substitute %V/%#V for one-based version of %W/%#W.
+*/
+inline CString My_COleDateTime_PreFormat(const COleDateTime& dt, LPCTSTR szFormat)
+{
+	// Get zero-based value
+   CString strWeekSun(My_COleDateTime_Format(dt, _T("%U")));
+	const int iWeekSun = atoi(strWeekSun) + 1;
+	TCHAR sz[5];
+	_itoa_s(iWeekSun, sz, sizeof sz, 10);
+	strWeekSun = sz;
+   CString strWeekMon(My_COleDateTime_Format(dt, _T("%W")));
+	const int iWeekMon = atoi(strWeekMon) + 1;
+	_itoa_s(iWeekMon, sz, sizeof sz, 10);
+	strWeekMon = sz;
+
+	/*
+		BUG: Technically, this doesn't account for "%%T" but we don't care (yet).
+	*/
+	CString strFormat(szFormat);
+
+	strFormat.Replace(_T("%#T"), strWeekSun);
+	if (iWeekSun < 10)
+		strWeekSun = _T('0') + strWeekSun;
+	strFormat.Replace(_T("%T"), strWeekSun);
+
+	strFormat.Replace(_T("%#V"), strWeekMon);
+	if (iWeekMon < 10)
+		strWeekMon = _T('0') + strWeekMon;
+	strFormat.Replace(_T("%V"), strWeekMon);
+
+	return strFormat;
+}
+
+
 static void _invalid_param_handler(const wchar_t *expression,
                                     const wchar_t *function, 
                                     const wchar_t *file, 
@@ -505,10 +545,9 @@ static void _invalid_param_handler(const wchar_t *expression,
    TRACE(_T("\tExpression: %s\n"), (LPCTSTR) strExpr);
 }
 
+
 /*
-   These functions update a static control's text with a formatted string.
-   Depending on whether the string contains a line separator (\n) character,
-   the control's style is modified to allow multiple lines.
+   Format the date/time
 */
 /*
    %a       Abbreviated weekday name
@@ -550,19 +589,7 @@ static void _invalid_param_handler(const wchar_t *expression,
       %#d, %#H, %#I, %#j, %#m, %#M, %#S, %#U, %#w, %#W, %#y, %#Y
       Remove leading zeros (if any).
 */
-/*
-   N.B.: We can't pass CStatic because SetWindowText is NOT virtual!
-   And we need it to be virtual because it does some stuff for transparent backgrounds.
-*/
-CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl)
-{
-	// if there's a change in the monitored registry key, re-load the format
-	if (_regmonClock.IsModified())
-		LoadFormat();
-
-	return UpdateControlText(ctl, _strFormat, COleDateTime::GetCurrentTime());
-}
-CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szFormat, const COleDateTime& dt)
+inline CString My_DateTimeFormat(LPCTSTR szFormat, const COleDateTime& dt)
 {
    /*
       MSBUG (VS.NET 2005):
@@ -610,17 +637,42 @@ CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szForma
 		strFormat.ReleaseBufferSetLength(strFormat.GetLength() - 1);
    }
 */
-
-   /*
-      Format the date/time
-   */
    const int iOldMode = _CrtSetReportMode(_CRT_ASSERT, 0);
    const _invalid_parameter_handler oldHandler = ::_set_invalid_parameter_handler(_invalid_param_handler);
+
+	const CString strFormat(::My_COleDateTime_PreFormat(dt, szFormat));
 //BUG:   CString s(dt.Format(szFormat));
    CString s(My_COleDateTime_Format(dt, szFormat));
-   ::_set_invalid_parameter_handler(oldHandler);
+
+	::_set_invalid_parameter_handler(oldHandler);
    _CrtSetReportMode(_CRT_ASSERT, iOldMode);
-   if (ctl.GetSafeHwnd() != NULL)
+
+	return s;
+}
+
+
+/*
+   These functions update a static control's text with a formatted string.
+   Depending on whether the string contains a line separator (\n) character,
+   the control's style is modified to allow multiple lines.
+*/
+/*
+   N.B.: We can't pass CStatic because SetWindowText is NOT virtual!
+   And we need it to be virtual because it does some stuff for transparent backgrounds.
+*/
+CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl)
+{
+	// if there's a change in the monitored registry key, re-load the format
+	if (_regmonClock.IsModified())
+		LoadFormat();
+
+	return UpdateControlText(ctl, _strFormat, COleDateTime::GetCurrentTime());
+}
+CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szFormat, const COleDateTime& dt)
+{
+	CString s(::My_DateTimeFormat(szFormat, dt));
+
+	if (ctl.GetSafeHwnd() != NULL)
    {
       if (_tcsstr(szFormat, _T("\\n")) != NULL)
       {

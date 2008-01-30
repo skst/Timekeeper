@@ -14,18 +14,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyMFC", "..\Library\MyMFC\MyMFC.vcproj", "{F8DCCCA3-8EAE-40E8-8A8D-A4494F555D80}"
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccProjectUniqueName0 = Timekeeper.vcproj
-		SccProjectName0 = \u0022$/Timekeeper\u0022,\u0020DQBAAAAA
-		SccLocalPath0 = .
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
-		SccProjectUniqueName1 = ..\\Library\\COMtoys\\ComToys.vcproj
-		SccProjectName1 = \u0022$/Library\u0022,\u0020PNBAAAAA
-		SccLocalPath1 = ..\\Library
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
-		SccProjectFilePathRelativizedFromConnection1 = COMtoys\\
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
