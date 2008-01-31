@@ -537,7 +537,7 @@ static void _invalid_param_handler(const wchar_t *expression,
                                     unsigned int line,
                                     uintptr_t /*pReserved*/)
 {
-	DEBUG_ONLY(line);
+	UNUSED(line);
    const CString strExpr(expression);
    const CString strFunction(function);
    const CString strFile(file);
@@ -641,8 +641,8 @@ inline CString My_DateTimeFormat(LPCTSTR szFormat, const COleDateTime& dt)
    const _invalid_parameter_handler oldHandler = ::_set_invalid_parameter_handler(_invalid_param_handler);
 
 	const CString strFormat(::My_COleDateTime_PreFormat(dt, szFormat));
-//BUG:   CString s(dt.Format(szFormat));
-   CString s(My_COleDateTime_Format(dt, szFormat));
+//BUG:   const CString s(dt.Format(strFormat));
+   const CString s(My_COleDateTime_Format(dt, strFormat));
 
 	::_set_invalid_parameter_handler(oldHandler);
    _CrtSetReportMode(_CRT_ASSERT, iOldMode);

@@ -8,8 +8,7 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #include "afxres.h"
-#include "MyMFC/pmsres.h"
-
+#include "MyMFC/pmsres.h"
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -474,7 +473,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,40,125,0
+ FILEVERSION 1,40,126,0
  PRODUCTVERSION 1,40,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -492,7 +491,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.40.0125"
+            VALUE "FileVersion", "1.40.0126"
             VALUE "InternalName", "Timekeeper"
             VALUE "LegalCopyright", "© 2004-2008 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"
