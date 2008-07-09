@@ -657,6 +657,7 @@ void CMyDeskBand::OnAbout()
 void CMyDeskBand::OnHelp() 
 {
    const CString strPath(skst::GetLocalPath(::AfxGetResourceHandle(), CString(MAKEINTRESOURCE(IDS_HELP_FILE))).c_str());
+	TRACE(_T("Help file: {%s}\n"), (LPCTSTR) strPath);
    ::ShellExecute(GetSafeHwnd(), _T("open"), strPath, _T(""), _T(""), SW_SHOWNORMAL);
 }
 

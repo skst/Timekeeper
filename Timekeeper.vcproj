@@ -195,7 +195,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="atl.lib"
-				OutputFile="$(OutDir)\$(ProjectName)$(PlatformName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="delayimp.lib;$(SolutionDir)\..\CommonWin;$(SolutionDir)\..\Common"
@@ -394,7 +394,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="atl.lib"
-				OutputFile="$(OutDir)\$(ProjectName)$(PlatformName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="delayimp.lib"
@@ -567,11 +567,11 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\Library\COMtoys\BandObj.rgs"
+			RelativePath="..\common\COMtoys\BandObj.rgs"
 			>
 		</File>
 		<File
-			RelativePath="..\common\COMtoys\BandObj.rgs"
+			RelativePath="..\Library\COMtoys\BandObj.rgs"
 			>
 		</File>
 		<File
