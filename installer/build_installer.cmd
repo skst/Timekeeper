@@ -1,22 +1,51 @@
 @echo off
 
+setlocal
+
+set versionApp=1.42.131.0
+
+echo.
+echo Remember to set the version in this script...
+echo Version set to %versionApp%.
+echo.
+filever files\Timekeeper.dll
+filever files\Timekeeper64.dll
+pause
+
 cd "%~dp0"
+cd
 
-rem	N.B. xcopy does NOT copy read-only attribute
-xcopy /y ..\help\*.htm
-xcopy /y ..\help\*.png
-xcopy /y ..\help\*.gif
+del /q files\*.*
 
-echo Building 32-bit installer...
-xcopy /y ..\release\Timekeeper.dll
-"%ProgramFiles%\Install Creator\ic.exe" /b Timekeeper.iit 
+REM copy /y ..\..\Documents\License-free.txt	files
+REM copy /y ..\..\Documents\Warranty.txt     files
+
+copy /y ..\Release\Timekeeper.dll		files
+copy /y ..\x64\Release\Timekeeper.dll	files\Timekeeper64.dll
+copy /y ..\help\*.png						files
+copy /y ..\help\*.htm						files
+copy /y ..\help\*.gif						files
+
+attrib -r *.*
+
+del /q timekeeper-setup.exe
 
 
-echo Building 64-bit installer...
-xcopy /y ..\x64\release\Timekeeper.dll
-"%ProgramFiles%\Install Creator\ic.exe" /b Timekeeper64.iit 
+set pathEXE=%ProgramFiles%\NSIS\makensis.exe
+if not exist "%pathEXE%" (
+	echo.
+	echo Unable to find NSIS. Please install from http://nsis.sourceforge.net.
+	echo.
+	goto :EOF
+)
+
+"%pathEXE%" -DgVerInstaller=%versionApp% Timekeeper.nsi 
+ECHO "%pathEXE" -DgVerInstaller=%versionApp% Timekeeper64.nsi 
 
 
-echo Updating Web site directory...
-xcopy /-y timekeeper-i.exe "%userprofile%\My Documents\Web Sites\skst.com\htdocs\12noon\files"
-xcopy /-y timekeeper-i64.exe "%userprofile%\My Documents\Web Sites\skst.com\htdocs\12noon\files"
+if exist timekeeper-setup.exe (
+	echo Updating Web site directory...
+	xcopy /-y timekeeper-setup.exe "%userprofile%\My Documents\Web Sites\skst.com\12noon\files"
+)
+
+endlocal
