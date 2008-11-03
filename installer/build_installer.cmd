@@ -8,8 +8,8 @@ echo.
 echo Remember to set the version in this script...
 echo Version set to %versionApp%.
 echo.
-filever files\Timekeeper.dll
-filever files\Timekeeper64.dll
+filever ..\Release\Timekeeper.dll
+filever ..\x64\Release\Timekeeper.dll
 pause
 
 cd "%~dp0"
