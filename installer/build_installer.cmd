@@ -26,7 +26,7 @@ copy /y ..\help\*.png						files
 copy /y ..\help\*.htm						files
 copy /y ..\help\*.gif						files
 
-attrib -r *.*
+attrib -r files\*.*
 
 del /q timekeeper-setup.exe
 
