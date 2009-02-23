@@ -8,7 +8,7 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #include "afxres.h"
-#include "MyMFC/pmsres.h"
+#include "MyMFC/pmsres.h"
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -381,7 +381,7 @@ END
 
 IDD_CONFIGURE DIALOGEX 0, 0, 248, 141
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Configure Clock Display"
+CAPTION "Configure Display"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     LTEXT           "<sample>",IDC_SAMPLE,8,8,232,28,SS_CENTERIMAGE | SS_ENDELLIPSIS,WS_EX_STATICEDGE
