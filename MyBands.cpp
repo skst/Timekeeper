@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// (c) 2006-2008 12noon, Stefan K. S. Tucker
+// (c) 2006-2010 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 /*
@@ -41,7 +41,7 @@
 #include "MyMFC/aboutdlg.h"
 #include "MyMFC/graphics.h"
 
-#include "MyWin/getprocaddress.h"
+#include "MyWin/misc.h"
 
 #include "MyBands.h"
 #include "resource.h"
@@ -495,31 +495,21 @@ void CMyDeskBand::DoSize(UINT /*nType*/, int cx, int cy)
          N.B.: We have to get the real client area
                if Windows is using a visual style.
       */
-      // if (::IsAppThemed())
-      typedef BOOL (STDAPICALLTYPE * FCT_IsAppThemed)();
-      skst::GetProcAddress<FCT_IsAppThemed> gpa("uxtheme.dll", "IsAppThemed");
-      if (gpa)
-      {
-         if ((*gpa)())
-            GetVisualStyleClientRect(rClock);
-         else
-            _bThemesSupported = false;
-      }
+		if (::IsAppThemed())
+         GetVisualStyleClientRect(rClock);
       else
          _bThemesSupported = false;
    }
 
-   // enlarge rect by margin constant (to fit icon and edges)
 #if defined(_LOGO)
+   // enlarge rect by margin constant (to fit icon and edges)
    CRect rAbout;
-#endif
 
    /*
       horizontal
    */
    if (m_dwViewMode != DBIF_VIEWMODE_VERTICAL)
    {
-#if defined(_LOGO)
       // About btn
       rAbout.left = rClock.left + (iMarginStatic / 2);
       rAbout.right = rAbout.left + _sizeAbout.cx;
@@ -528,14 +518,12 @@ void CMyDeskBand::DoSize(UINT /*nType*/, int cx, int cy)
 //      TRACE(_T("\tH: rClock.Height = %d, rClock.top = %d, rAbout.top = %d\n"), rClock.Height(), rClock.top, rAbout.top);
 
       rClock.left = rAbout.right + (iMarginStatic / 2);
-#endif
    }
    /*
       vertical
    */
    else
    {
-#if defined(_LOGO)
       // About btn
       rAbout.top = rClock.top + (iMarginStatic / 2);
       rAbout.bottom = rAbout.top + _sizeAbout.cy;
@@ -544,13 +532,12 @@ void CMyDeskBand::DoSize(UINT /*nType*/, int cx, int cy)
 //      TRACE(_T("\tV: rClock.Width = %d, rClock.left = %d, rAbout.left = %d\n"), rClock.Width(), rClock.left, rAbout.left);
 
       rClock.top = rAbout.bottom + (iMarginStatic / 2);
-#endif
    }
 
-#if defined(_LOGO)
 //   TRACE("\tAbout: (%d,%d) %dx%d\n", rAbout.left, rAbout.top, rAbout.Width(), rAbout.Height());
    _ctlAbout.SetWindowPos(NULL, rAbout.left, rAbout.top, rAbout.Width(), rAbout.Height(), SWP_NOZORDER);
 #endif
+
 //   TRACE("\tClock: (%d,%d) %dx%d\n", rClock.left, rClock.top, rClock.Width(), rClock.Height());
    _ctlClock.SetWindowPos(NULL, rClock.left, rClock.top, rClock.Width(), rClock.Height(), SWP_NOZORDER);
 }

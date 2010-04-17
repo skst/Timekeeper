@@ -2,7 +2,7 @@
 
 setlocal
 
-set versionApp=1.42.131.0
+set versionApp=1.4.3.132
 
 echo.
 echo Remember to set the version in this script...
@@ -15,6 +15,7 @@ pause
 cd "%~dp0"
 cd
 
+md files >nul:
 del /q files\*.*
 
 REM copy /y ..\..\Documents\License-free.txt	files
