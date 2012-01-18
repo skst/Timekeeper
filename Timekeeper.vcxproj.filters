@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{515a72db-a420-4fc6-ac16-b65cf4827d92}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8f52feaf-c68c-4b83-b9cf-a36cdcbf2484}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Help Files">
+      <UniqueIdentifier>{cb7c111f-80d9-4bf6-a1cb-e5ee67582065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0b88357b-1fe3-4fd0-a47b-2efd71a83739}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Calendar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigureDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\about.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\arrow_r.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\BandEnable.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\common\res\company.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\company_logo.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\datetime.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\finger.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="RES\xptheme.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="help\Timekeeper.htm">
+      <Filter>Help Files</Filter>
+    </None>
+    <None Include="Timekeeper.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\Library\COMtoys\BandObj.rgs" />
+    <None Include="..\common\COMtoys\BandObj.rgs" />
+    <None Include="Features.txt" />
+    <None Include="Timekeeper ToDo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Timekeeper.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Calendar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigureDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
