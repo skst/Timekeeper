@@ -13,20 +13,18 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// German (Neutral) resources
+// German resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
-#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_NEUTRAL
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDM_FORMATS MENU 
+IDM_FORMATS MENU
 BEGIN
     POPUP "Uhrzeitformat"
     BEGIN
@@ -107,7 +105,7 @@ BEGIN
     END
 END
 
-IDR_DESKBAND MENU 
+IDR_DESKBAND MENU
 BEGIN
     POPUP "Kontext"
     BEGIN
@@ -173,7 +171,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_BAND_ENABLE, DIALOG
     BEGIN
@@ -199,12 +197,12 @@ END
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_FILE           "Timekeeper.htm"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_INI_DEBUG           "Debug"
     IDS_INI_SHOW_HELP       "ShowHelp"
@@ -212,12 +210,12 @@ BEGIN
     IDS_INI_IDEAL_CX        "IdealCX"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_DESKBAND            "Timekeeper\n&12noon Timekeeper"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_INI_IDEAL_CY        "IdealCY"
     IDS_INI_COLOR_TEXT      "ColorText"
@@ -231,37 +229,35 @@ BEGIN
     IDS_INI_CLOCK_FONT_DEFAULT "FontDefault"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "Timekeeper"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_ALIGN_LEFT          "links"
     IDS_ALIGN_CENTER        "zentriert"
     IDS_ALIGN_RIGHT         "rechts"
 END
 
-#endif    // German (Neutral) resources
+#endif    // German resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_DESKBAND MENU 
+IDR_DESKBAND MENU
 BEGIN
     POPUP "Context"
     BEGIN
@@ -281,7 +277,7 @@ BEGIN
     END
 END
 
-IDM_FORMATS MENU 
+IDM_FORMATS MENU
 BEGIN
     POPUP "Clock Formats"
     BEGIN
@@ -408,7 +404,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_BAND_ENABLE, DIALOG
     BEGIN
@@ -473,8 +469,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,4,3,132
- PRODUCTVERSION 1,4,3,0
+ FILEVERSION 1,44,0,133
+ PRODUCTVERSION 1,44,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -491,13 +487,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.4.3.132"
+            VALUE "FileVersion", "1.44.0.133"
             VALUE "InternalName", "Timekeeper"
-            VALUE "LegalCopyright", "© 2004-2010 12noon, Stefan K.S. Tucker"
+            VALUE "LegalCopyright", "© 2004-2012 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"
             VALUE "OriginalFilename", "Timekeeper.dll"
             VALUE "ProductName", "12noon Timekeeper"
-            VALUE "ProductVersion", "1.4.3"
+            VALUE "ProductVersion", "1.44.0.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -538,12 +534,12 @@ IDI_ABOUT               ICON                    "res\\about.ico"
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_FILE           "Timekeeper.htm"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_INI_DEBUG           "Debug"
     IDS_INI_SHOW_HELP       "ShowHelp"
@@ -551,12 +547,12 @@ BEGIN
     IDS_INI_IDEAL_CX        "IdealCX"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_DESKBAND            "Timekeeper\n&12noon Timekeeper"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_INI_IDEAL_CY        "IdealCY"
     IDS_INI_COLOR_TEXT      "ColorText"
@@ -570,19 +566,19 @@ BEGIN
     IDS_INI_CLOCK_FONT_DEFAULT "FontDefault"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "Timekeeper"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_ALIGN_LEFT          "Left"
     IDS_ALIGN_CENTER        "Center"
     IDS_ALIGN_RIGHT         "Right"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -2,13 +2,13 @@
 
 setlocal
 
-set versionApp=1.4.3.132
+set versionApp=1.44.0.133
 
 echo.
 echo Remember to set the version in this script...
 echo Version set to %versionApp%.
 echo.
-filever ..\Release\Timekeeper.dll
+filever ..\Win32\Release\Timekeeper.dll
 filever ..\x64\Release\Timekeeper.dll
 pause
 
@@ -21,11 +21,11 @@ del /q files\*.*
 REM copy /y ..\..\Documents\License-free.txt	files
 REM copy /y ..\..\Documents\Warranty.txt     files
 
-copy /y ..\Release\Timekeeper.dll		files
-copy /y ..\x64\Release\Timekeeper.dll	files\Timekeeper64.dll
-copy /y ..\help\*.png						files
-copy /y ..\help\*.htm						files
-copy /y ..\help\*.gif						files
+copy /y ..\Win32\Release\Timekeeper.dll	files
+copy /y ..\x64\Release\Timekeeper.dll		files\Timekeeper64.dll
+copy /y ..\help\*.png							files
+copy /y ..\help\*.htm							files
+copy /y ..\help\*.gif							files
 
 attrib -r files\*.*
 
@@ -41,7 +41,7 @@ if not exist "%pathEXE%" (
 )
 
 "%pathEXE%" -DgVerInstaller=%versionApp% Timekeeper.nsi 
-ECHO "%pathEXE" -DgVerInstaller=%versionApp% Timekeeper64.nsi 
+REM "%pathEXE" -DgVerInstaller=%versionApp% Timekeeper64.nsi 
 
 
 if exist timekeeper-setup.exe (
