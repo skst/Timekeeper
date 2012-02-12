@@ -2,14 +2,16 @@
 
 setlocal
 
-set versionApp=1.44.0.133
+set versionApp=1.44.0.134
 
 echo.
 echo Remember to set the version in this script...
 echo Version set to %versionApp%.
 echo.
+rem http://support.microsoft.com/kb/913111
 filever ..\Win32\Release\Timekeeper.dll
 filever ..\x64\Release\Timekeeper.dll
+echo (Note: Filever 32-bit says: W32i is 32-bit. W32 and Wx64 are 64-bit.)
 pause
 
 cd "%~dp0"

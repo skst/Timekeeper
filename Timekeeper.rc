@@ -469,7 +469,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,44,0,133
+ FILEVERSION 1,44,0,134
  PRODUCTVERSION 1,44,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -477,7 +477,7 @@ VS_VERSION_INFO VERSIONINFO
 #else
  FILEFLAGS 0x0L
 #endif
- FILEOS 0x4L
+ FILEOS 0x40004L
  FILETYPE 0x1L
  FILESUBTYPE 0x0L
 BEGIN
@@ -487,7 +487,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.44.0.133"
+            VALUE "FileVersion", "1.44.0.134"
             VALUE "InternalName", "Timekeeper"
             VALUE "LegalCopyright", "© 2004-2012 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"

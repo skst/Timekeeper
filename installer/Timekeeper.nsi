@@ -20,12 +20,13 @@
 !include MUI2.nsh
 
 !include x64.nsh
+!include Library.nsh				# http://nsis.sourceforge.net/Docs/AppendixB.html
 
 !define gProductName				"Timekeeper"
 !define gProductTarget			"Timekeeper.dll"
 
 !define gCompanyName				"12noon"
-!define gCompanyURL				"http://www.12noon.com"
+!define gCompanyURL				"http://12noon.com"
 
 !define gRegistryKeySuite		"Software\${gCompanyName}"
 !define gRegistryKeyApp			"${gRegistryKeySuite}\${gProductName}"
@@ -39,7 +40,7 @@
 
 
 #	64-bit support
-Var b64bit
+#Var b64bit
 Var MyProgramFiles
 # http://nsis.sourceforge.net/Docs/Chapter4.html#4.2.3
 Function .onInit
@@ -47,11 +48,11 @@ Function .onInit
 	# http://forums.winamp.com/showthread.php?s=&threadid=284081
 	# http://forums.winamp.com/showthread.php?s=&threadid=292670
 	${If} ${RunningX64}
-		StrCpy $b64bit 1
+#		StrCpy $b64bit 1
 		StrCpy $MyProgramFiles $PROGRAMFILES64
 		SetRegView 64
 	${Else}
-		StrCpy $b64bit 0
+#		StrCpy $b64bit 0
 		StrCpy $MyProgramFiles $PROGRAMFILES
 	${EndIf}
 	StrCpy $INSTDIR "$MyProgramFiles\${gCompanyName} ${gProductName}"
@@ -61,7 +62,7 @@ Name "${gProductName}"
 OutFile timekeeper-setup.exe
 
 # Adding a trailing backslash prevents directory from being appended to a directory the user selects.
-InstallDir "$PROGRAMFILES\${gCompanyName} ${gProductName}"
+InstallDir "$MyProgramFiles\${gCompanyName} ${gProductName}"
 InstallDirRegKey HKLM "${gUninstallKey}" "UninstallString"
 
 # http://nsis.sourceforge.net/UAC_plug-in
@@ -162,7 +163,7 @@ Section "${gProductName}" sectionMain
 	#
 	File /r /x "License*.txt" /x "Warranty.txt" /x "Desktop.ini" /x "thumbs.db" /x *.dll "files\*.*"
 	${If} ${RunningX64}
-		File "/oname=Timekeeper.dll " "files\Timekeeper64.dll"
+		File "/oname=Timekeeper.dll" "files\Timekeeper64.dll"
 	${Else}
 		File "files\Timekeeper.dll"
 	${EndIf}
@@ -172,9 +173,13 @@ Section "${gProductName}" sectionMain
 	# Register the DLL
 	#
 	${If} ${RunningX64}
-		ExecWait 'regsvr32.exe /s "${gProductTarget}"'
+#		ExecWait 'regsvr32.exe /s "$INSTDIR\${gProductTarget}"'
+		!define LIBRARY_X64
+		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_PROTECTED "files\Timekeeper64.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
+		!undef LIBRARY_X64
 	${Else}
-		RegDLL "${gProductTarget}"
+#		RegDLL "$INSTDIR\${gProductTarget}"
+		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_PROTECTED "files\Timekeeper.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
 	${EndIf}
 
 
@@ -198,7 +203,7 @@ Section "${gProductName}" sectionMain
 
 	# Write default values for custom keys
 	WriteRegStr		HKLM "${gUninstallKey}" "Contact"			"support-request@12noon.com"
-	WriteRegStr		HKLM "${gUninstallKey}" "HelpLink"			"${gCompanyURL}/support.htm"
+	WriteRegStr		HKLM "${gUninstallKey}" "HelpLink"			"${gCompanyURL}"
 	WriteRegStr		HKLM "${gUninstallKey}" "Publisher"			"${gCompanyName}"
 	WriteRegStr		HKLM "${gUninstallKey}" "URLInfoAbout"		"${gCompanyURL}"
 	WriteRegStr		HKLM "${gUninstallKey}" "URLUpdateInfo"	"${gCompanyURL}"
@@ -234,9 +239,13 @@ Section "Uninstall"
 	# Unregister the DLL
 	#
 	${If} ${RunningX64}
-		ExecWait 'regsvr32.exe /s /u "${gProductTarget}"'
+#		ExecWait 'regsvr32.exe /s /u "${gProductTarget}"'
+		!define LIBRARY_X64
+		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_PROTECTED "$INSTDIR\${gProductTarget}"
+		!undef LIBRARY_X64
 	${Else}
-		UnRegDLL "${gProductTarget}"
+#		UnRegDLL "${gProductTarget}"
+		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_PROTECTED "$INSTDIR\${gProductTarget}"
 	${EndIf}
 
 
