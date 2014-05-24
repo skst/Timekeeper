@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// (c) 2006-2010 12noon, Stefan K. S. Tucker
+// (c) 2006-2014 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 /*
@@ -418,32 +418,6 @@ void CMyDeskBand::OnDestroy()
 }
 
 
-//void CMyDeskBand::DoThemeChanged()
-//{
-//   /*
-//      determine the text color for the rate controls
-//   */
-//   COLORREF rgbText = ::GetSysColor(COLOR_BTNTEXT);
-//   // if (::IsAppThemed())
-//   typedef BOOL (STDAPICALLTYPE * FCT_IsAppThemed)();
-//   skst::GetProcAddress<FCT_IsAppThemed> gpa("uxtheme.dll", "IsAppThemed");
-//   if (gpa)
-//   {
-//      if ((*gpa)())
-//      {
-//         HTHEME hTheme = ::OpenThemeData(GetSafeHwnd(), L"taskbar");
-//         if (hTheme != NULL)
-//         {
-//            rgbText = ::GetThemeSysColor(hTheme, COLOR_CAPTIONTEXT);
-//            ::CloseThemeData(hTheme);
-//         }
-//      }
-//   }
-//
-////TODO: do whatever we have to when the theme changes
-//}
-
-
 //////////////////
 // Window was resized: adjust controls
 //
@@ -488,18 +462,6 @@ void CMyDeskBand::DoSize(UINT /*nType*/, int cx, int cy)
    CRect rClock;
    GetClientRect(rClock);
    ASSERT((rClock.Width() == cx) && (rClock.Height() == cy));
-
-   if (_bThemesSupported)
-   {
-      /*
-         N.B.: We have to get the real client area
-               if Windows is using a visual style.
-      */
-		if (::IsAppThemed())
-         GetVisualStyleClientRect(rClock);
-      else
-         _bThemesSupported = false;
-   }
 
 #if defined(_LOGO)
    // enlarge rect by margin constant (to fit icon and edges)

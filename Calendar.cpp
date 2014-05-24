@@ -139,7 +139,7 @@ CSize CalendarWindow::GetRequiredDimensions(const int nNumMonthsX, const int nNu
 {
    CRect rc(CPoint(0,0), _sizeMinClient);
 
-   const LRESULT nWidthPixelsToday = SendMessage(MCM_GETMAXTODAYWIDTH);
+   const LONG nWidthPixelsToday = (LONG)SendMessage(MCM_GETMAXTODAYWIDTH);
    if (nWidthPixelsToday > rc.Width())
       rc.right = nWidthPixelsToday;
 

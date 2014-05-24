@@ -2,7 +2,7 @@
 
 setlocal
 
-set versionApp=1.50.0.150
+set versionApp=1.60.0.158
 
 echo.
 echo Remember to set the version in this script...

@@ -1,19 +1,19 @@
 //---------------------------------------------------------------------------
-// (c) 2006 12noon, Stefan K. S. Tucker
+// (c) 2006-2014 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 #pragma once
 
-#include "MyWin/tooltipctrl.h"
+#include "MyWin/ToolTipCtrl.h"
 
 #include "COMtoys/BandObj.h"
 
-#include "MyMFC/staticcolor.h"
-#include "MyMFC/buttondrawthemed.h"
+#include "MyMFC/StaticColor.h"
 
-#include "calendar.h"
+#include "Calendar.h"
 #include "ConfigureDlg.h"
 #include "Resource.h"
+
 
 /*
    Use this to add a Logo on the left/top.
@@ -90,15 +90,23 @@ protected:
    void BuildContextMenu();
 
 	// override
-   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
+	virtual BOOL PreCreateWindow(CREATESTRUCT& cs) override;
+	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) override;
 
-   virtual void    IPersistStreamGetSizeMax(ULARGE_INTEGER *pcbSize);
-   virtual HRESULT IPersistStreamSave(IStream *pStream);
-   virtual HRESULT IPersistStreamLoad(IStream *pStream);
+	virtual void    IPersistStreamGetSizeMax(ULARGE_INTEGER *pcbSize) override;
+	virtual HRESULT IPersistStreamSave(IStream *pStream) override;
+	virtual HRESULT IPersistStreamLoad(IStream *pStream) override;
+
+	virtual STDMETHODIMP SetCompositionState(BOOL fCompositionEnabled) override
+	{
+		__super::SetCompositionState(fCompositionEnabled);
+		FormatClock();
+		UpdateClockText();
+		return S_OK;
+	}
+
 
 	virtual void DoSize(UINT nType, int cx, int cy);
-//   virtual void DoThemeChanged();
 
    void SetBandSizes();
    void UpdateClockText();

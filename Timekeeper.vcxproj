@@ -330,6 +330,7 @@ rem )
     <ClInclude Include="MyBands.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\about.ico" />
@@ -339,13 +340,11 @@ rem )
     <None Include="res\company_logo.bmp" />
     <None Include="res\datetime.ico" />
     <None Include="RES\finger.cur" />
-    <None Include="RES\xptheme.xml" />
     <None Include="help\Timekeeper.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="Timekeeper.def" />
     <None Include="..\Library\COMtoys\BandObj.rgs" />
-    <None Include="..\common\COMtoys\BandObj.rgs" />
     <None Include="Features.txt" />
     <None Include="Timekeeper ToDo.txt" />
   </ItemGroup>
