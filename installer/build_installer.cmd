@@ -2,7 +2,7 @@
 
 setlocal
 
-set versionApp=1.44.0.134
+set versionApp=1.50.0.150
 
 echo.
 echo Remember to set the version in this script...
@@ -34,7 +34,7 @@ attrib -r files\*.*
 del /q timekeeper-setup.exe
 
 
-set pathEXE=%ProgramFiles%\NSIS\makensis.exe
+set pathEXE=%ProgramFiles(x86)%\NSIS\makensis.exe
 if not exist "%pathEXE%" (
 	echo.
 	echo Unable to find NSIS. Please install from http://nsis.sourceforge.net.
@@ -48,7 +48,7 @@ REM "%pathEXE" -DgVerInstaller=%versionApp% Timekeeper64.nsi
 
 if exist timekeeper-setup.exe (
 	echo Updating Web site directory...
-	xcopy /-y timekeeper-setup.exe "%userprofile%\My Documents\Web Sites\skst.com\12noon\files"
+	ECHO xcopy /-y timekeeper-setup.exe "%OneDrive%\Documents\Web Sites\skst.com\12noon\files"
 )
 
 endlocal

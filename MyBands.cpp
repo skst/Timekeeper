@@ -63,7 +63,7 @@ BOOL CMyBandsDll::InitInstance()
    ComToys::bTRACE = FALSE;
    CBandObj::bTRACE = FALSE;
 
-   TRACEFN(__FUNCTION__ _T("\n"));
+	TRACEFN(_T(__FUNCTION__) _T("\n"));
 
 	SetRegistryKey(_T("12noon"));
    TRACE("App name: %s\n", ::AfxGetAppName());
@@ -402,7 +402,7 @@ NotifyBandInfoChanged();
 
 void CMyDeskBand::OnDestroy()
 {
-	TRACE(__FUNCTION__ _T("\n"));
+	TRACE(_T(__FUNCTION__) _T("\n"));
 
 	if (_idTimerUpdateDisplay != 0)
 	{
@@ -483,7 +483,7 @@ void CMyDeskBand::DoSize(UINT /*nType*/, int cx, int cy)
 {
    UNUSED(cx);
    UNUSED(cy);
-	TRACE(__FUNCTION__ _T("(%d,%d)\n"), cx, cy);
+	TRACE(_T(__FUNCTION__) _T("(%d,%d)\n"), cx, cy);
 
    CRect rClock;
    GetClientRect(rClock);
@@ -632,7 +632,7 @@ void CMyDeskBand::OnAdjustDateTime()
 			control.exe timedate.cpl
 			control.exe date/time
 	*/
-   ::ShellExecute(GetSafeHwnd(), _T("open"), "control.exe", _T("date/time"), _T(""), SW_SHOWNORMAL);
+   ::ShellExecute(GetSafeHwnd(), _T("open"), _T("control.exe"), _T("date/time"), _T(""), SW_SHOWNORMAL);
 }
 
 void CMyDeskBand::OnAbout()
@@ -902,7 +902,7 @@ void CMyDeskBand::OnCalendar()
    }
 
    if (!_cal.Create())
-      ::AfxMessageBox("Unable to display calendar.");
+      ::AfxMessageBox(_T("Unable to display calendar."));
 }
 
 void CMyDeskBand::OnCalSelectFont()

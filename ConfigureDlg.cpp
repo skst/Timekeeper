@@ -503,13 +503,13 @@ inline CString My_COleDateTime_PreFormat(const COleDateTime& dt, LPCTSTR szForma
 {
 	// Get zero-based value
    CString strWeekSun(My_COleDateTime_Format(dt, _T("%U")));
-	const int iWeekSun = atoi(strWeekSun) + 1;
+	const int iWeekSun = _tstoi(strWeekSun) + 1;
 	TCHAR sz[5];
-	_itoa_s(iWeekSun, sz, sizeof sz, 10);
+	_itot_s(iWeekSun, sz, sizeof sz, 10);
 	strWeekSun = sz;
    CString strWeekMon(My_COleDateTime_Format(dt, _T("%W")));
-	const int iWeekMon = atoi(strWeekMon) + 1;
-	_itoa_s(iWeekMon, sz, sizeof sz, 10);
+	const int iWeekMon = _tstoi(strWeekMon) + 1;
+	_itot_s(iWeekMon, sz, sizeof sz, 10);
 	strWeekMon = sz;
 
 	/*
@@ -677,7 +677,7 @@ CString ConfigureDlg::UpdateControlText(MyMFC::StaticColor& ctl, LPCTSTR szForma
       if (_tcsstr(szFormat, _T("\\n")) != NULL)
       {
          ctl.ModifyStyle(SS_CENTERIMAGE | SS_ENDELLIPSIS, 0);
-         s.Replace("\\n", "\n");
+         s.Replace(_T("\\n"), _T("\n"));
       }
       else
          ctl.ModifyStyle(0, SS_CENTERIMAGE | SS_ENDELLIPSIS);
