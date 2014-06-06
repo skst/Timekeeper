@@ -378,12 +378,12 @@ void ConfigureDlg::OnBnClickedDefault()
    ::SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof _lfFontClock, &_lfFontClock, 0);
 
    _bColorDefaultText = true;
-   _crColorText = MyMFC::StaticColor::GetTextColorDefault();
+	_crColorText = RGB(0xFF, 0xFF, 0xFF);	// White
    _ctlSwatchText.SetBgColor(_crColorText);
 
-   _bColorTransparentBG = true;
+   _bColorTransparentBG = false;
    _bColorDefaultBG = true;
-   _crColorBG = ::GetSysColor(COLOR_3DFACE);
+	_crColorBG = RGB(0x00, 0x00, 0x00);		// Black
    _ctlSwatchBG.SetBgColorDefault();
 
    UpdateData(FALSE);

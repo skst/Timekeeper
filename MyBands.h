@@ -99,9 +99,12 @@ protected:
 
 	virtual STDMETHODIMP SetCompositionState(BOOL fCompositionEnabled) override
 	{
-		__super::SetCompositionState(fCompositionEnabled);
-		FormatClock();
-		UpdateClockText();
+		if (fCompositionEnabled != m_bCompositionEnabled)
+		{
+			__super::SetCompositionState(fCompositionEnabled);
+			FormatClock();
+			UpdateClockText();
+		}
 		return S_OK;
 	}
 
