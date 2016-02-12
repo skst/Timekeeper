@@ -2,7 +2,7 @@
 
 setlocal
 
-set versionApp=1.62.0.161
+set versionApp=1.62.1.170
 
 echo.
 echo Remember to set the version in this script...
@@ -34,7 +34,7 @@ attrib -r files\*.*
 del /q timekeeper-setup.exe
 
 
-set pathEXE=%ProgramFiles(x86)%\NSIS\makensis.exe
+set pathEXE=%OneDrive%\Applications\NSIS\makensis.exe
 if not exist "%pathEXE%" (
 	echo.
 	echo Unable to find NSIS. Please install from http://nsis.sourceforge.net.

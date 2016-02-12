@@ -19,7 +19,7 @@
 //#define _WIN32_WINDOWS	0x0600
 //#define WINVER				0x0600
 
-#define _WIN32_WINNT		0x0600
+#define _WIN32_WINNT		0x0601
 
 #ifndef VC_EXTRALEAN
 #define VC_EXTRALEAN            // Exclude rarely-used stuff from Windows headers

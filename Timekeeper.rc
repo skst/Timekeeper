@@ -469,8 +469,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,62,0,161
- PRODUCTVERSION 1,62,0,161
+ FILEVERSION 1,62,1,170
+ PRODUCTVERSION 1,62,1,170
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -487,13 +487,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "12noon"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.62.0.161"
+            VALUE "FileVersion", "1.62.1.170"
             VALUE "InternalName", "Timekeeper"
-            VALUE "LegalCopyright", "© 2004-2014 12noon, Stefan K.S. Tucker"
+            VALUE "LegalCopyright", "© 2004-2016 12noon, Stefan K.S. Tucker"
             VALUE "LegalTrademarks", "12noon"
             VALUE "OriginalFilename", "Timekeeper.dll"
             VALUE "ProductName", "12noon Timekeeper"
-            VALUE "ProductVersion", "1.62.0.161"
+            VALUE "ProductVersion", "1.62.1.170"
         END
     END
     BLOCK "VarFileInfo"
@@ -510,14 +510,18 @@ END
 
 IDR_DESKBAND            REGISTRY                "..\\Library\\COMtoys\\BandObj.rgs"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
 IDB_ABOUT               BITMAP                  "res\\company_logo.bmp"
+
 IDB_BAND_ENABLE         BITMAP                  "res\\BandEnable.bmp"
+
 IDB_ARROW_R             BITMAP                  "res\\arrow_r.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -527,7 +531,9 @@ IDB_ARROW_R             BITMAP                  "res\\arrow_r.bmp"
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\datetime.ico"
+
 IDI_ABOUT               ICON                    "res\\about.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
