@@ -2,7 +2,7 @@
 
 setlocal
 
-set versionApp=1.62.1.170
+set versionApp=1.62.2.171
 
 echo.
 echo Remember to set the version in this script...
@@ -48,7 +48,7 @@ REM "%pathEXE" -DgVerInstaller=%versionApp% Timekeeper64.nsi
 
 if exist timekeeper-setup.exe (
 	echo Updating Web site directory...
-	ECHO xcopy /-y timekeeper-setup.exe "%OneDrive%\Documents\Web Sites\skst.com\12noon\files"
+	xcopy /-y timekeeper-setup.exe "%OneDrive%\Development\Web Sites\GreenGeeks\public_html\domains\12noon.com\files"
 )
 
 endlocal

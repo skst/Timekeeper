@@ -30,6 +30,7 @@
     <ProjectGuid>{17FFC676-A235-42AA-A838-0566BEABE3A6}</ProjectGuid>
     <RootNamespace>Timekeeper</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -115,7 +116,6 @@
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -142,7 +142,7 @@
       <AdditionalDependencies>delayimp.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\MyWin\Lib;$(SolutionDir)..\Library\MyMFC\Lib;$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -152,6 +152,8 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
     </Link>
     <PostBuildEvent>
       <Command>rem if exist "\\Geyser\desktop-2k" (
@@ -180,7 +182,6 @@ rem )
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -207,7 +208,7 @@ rem )
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>different options&gt;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -267,7 +268,7 @@ rem )
       <AdditionalDependencies>delayimp.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(ProjectDir)\..\Library\COMToys\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
@@ -312,7 +313,7 @@ rem )
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>different options&gt;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
