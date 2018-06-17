@@ -20,7 +20,7 @@
 !include MUI2.nsh
 
 !include x64.nsh
-!include Library.nsh				# http://nsis.sourceforge.net/Docs/AppendixB.html
+!include Library.nsh				# InstallLib http://nsis.sourceforge.net/Docs/AppendixB.html
 
 !define gProductName				"Timekeeper"
 !define gProductTarget			"Timekeeper.dll"
@@ -175,11 +175,11 @@ Section "${gProductName}" sectionMain
 	${If} ${RunningX64}
 #		ExecWait 'regsvr32.exe /s "$INSTDIR\${gProductTarget}"'
 		!define LIBRARY_X64
-		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_PROTECTED "files\Timekeeper64.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
+		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_NOTPROTECTED "files\Timekeeper64.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
 		!undef LIBRARY_X64
 	${Else}
 #		RegDLL "$INSTDIR\${gProductTarget}"
-		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_PROTECTED "files\Timekeeper.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
+		!InsertMacro InstallLib REGDLL NOTSHARED REBOOT_NOTPROTECTED "files\Timekeeper.dll" "$INSTDIR\${gProductTarget}" "$INSTDIR"
 	${EndIf}
 
 
@@ -234,6 +234,7 @@ SectionEnd
 #----------------------------------------------------------------------
 #
 #	Uninstaller Section
+#
 Section "Uninstall"
 	#
 	# Unregister the DLL
@@ -241,11 +242,11 @@ Section "Uninstall"
 	${If} ${RunningX64}
 #		ExecWait 'regsvr32.exe /s /u "${gProductTarget}"'
 		!define LIBRARY_X64
-		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_PROTECTED "$INSTDIR\${gProductTarget}"
+		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_NOTPROTECTED "$INSTDIR\${gProductTarget}"
 		!undef LIBRARY_X64
 	${Else}
 #		UnRegDLL "${gProductTarget}"
-		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_PROTECTED "$INSTDIR\${gProductTarget}"
+		!InsertMacro UnInstallLib REGDLL NOTSHARED REBOOT_NOTPROTECTED "$INSTDIR\${gProductTarget}"
 	${EndIf}
 
 
