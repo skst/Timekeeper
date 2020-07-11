@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 13.00
 # Visual Studio 2013
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timekeeper", "Timekeeper.vcxproj", "{17FFC676-A235-42AA-A838-0566BEABE3A6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComToys", "..\Library\COMToys\ComToys.vcxproj", "{C37DF566-A97F-4E69-9EDC-6BF670251441}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComToys", "COMToys\ComToys.vcxproj", "{C37DF566-A97F-4E69-9EDC-6BF670251441}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyWin", "..\Library\MyWin\MyWin.vcxproj", "{45B208AE-C132-47CA-8D72-E24A2A27C20A}"
 EndProject

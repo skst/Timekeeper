@@ -1,0 +1,4 @@
+LIBRARY      CTY
+DESCRIPTION  'ComToys MFC Extensions'
+EXPORTS
+    ; Explicit exports can go here
