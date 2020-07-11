@@ -155,8 +155,8 @@ Section "${gProductName}" sectionMain
 	#
 	#	Documents for all products
 	#
-	File /nonfatal "..\..\Documents\License.txt"
-	File /nonfatal "..\..\Documents\Warranty.txt"
+	File /nonfatal "..\..\License.txt"
+	File /nonfatal "..\..\Warranty.txt"
 
 	#
 	# Application files
