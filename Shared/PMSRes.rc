@@ -1,0 +1,246 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "pmsres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "afxres.h"
+#include "pmsres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PMS_ABOUT DIALOGEX 32, 32, 244, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    CONTROL         IDC_PMS_EXTRASTRING,IDC_BITMAP,"Static",SS_BITMAP | NOT WS_VISIBLE,184,32,50,46
+    ICON            "",IDC_PMS_APPICON,8,8,20,20
+    LTEXT           "(product name)",IDC_PMS_PRODNAME,40,8,140,8,NOT WS_GROUP
+    LTEXT           "(product version)",IDC_PMS_VERSION,40,16,140,8,NOT WS_GROUP
+    LTEXT           "(company)",IDC_PMS_COMPANY,40,28,140,8,NOT WS_GROUP
+    LTEXT           "(copyright)",IDC_PMS_COPYRIGHT,40,40,140,24,NOT WS_GROUP
+    LTEXT           "(web site)",IDC_URL_WEB,40,68,140,8,NOT WS_GROUP
+    LTEXT           "(mailto)",IDC_URL_MAILTO,40,80,192,8,NOT WS_GROUP
+    LTEXT           "(extra string)",IDC_PMS_EXTRASTRING,40,96,192,16,NOT WS_GROUP
+    DEFPUSHBUTTON   "Close",IDOK,184,8,50,14
+END
+
+IDD_PMS_REGISTER DIALOGEX 0, 0, 260, 97
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "Register"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Name:",IDC_STATIC,40,13,22,8
+    EDITTEXT        IDC_PMS_NAME,68,8,124,13,ES_AUTOHSCROLL
+    LTEXT           "&Key:",IDC_STATIC,40,32,16,8
+    EDITTEXT        IDC_PMS_KEY,68,29,124,13,ES_AUTOHSCROLL
+    LTEXT           "You can drag a registration .ini file onto this window instead of clicking Browse to select it.",IDC_STATIC,40,48,152,16
+    DEFPUSHBUTTON   "OK",IDOK,201,8,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,201,28,50,14
+    PUSHBUTTON      "&Browse...",IDC_BROWSE,201,47,50,14
+    ICON            IDI_KEY,IDC_STATIC,8,8,20,20
+    LTEXT           "If the registration code is invalid, there will be a delay before you can try again.",IDC_STATIC,40,72,152,16
+END
+
+IDD_PROGRESS DIALOG 0, 0, 186, 85
+STYLE DS_SETFONT | DS_MODALFRAME | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "(activity)"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "(activity)",IDC_ACTIVITY,8,8,172,16
+    LTEXT           "#%d of %d",IDC_STATUS,8,28,172,8
+    CONTROL         "Progress1",IDC_BAR,"msctls_progress32",WS_BORDER,8,44,172,12
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,68,64,50,14
+END
+
+IDD_PMS_LOG_WINDOW DIALOGEX 0, 0, 395, 111
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Log"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,338,92,50,14
+    PUSHBUTTON      "Erase",IDC_ERASE,4,92,50,14
+    CONTROL         "",IDC_TEXT,"RichEdit20W",WS_VSCROLL | WS_HSCROLL | WS_TABSTOP | 0x884,4,4,384,80,WS_EX_STATICEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_PMS_ABOUT, DIALOG
+    BEGIN
+        RIGHTMARGIN, 242
+        BOTTOMMARGIN, 116
+    END
+
+    IDD_PMS_LOG_WINDOW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 388
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_12NOON              BITMAP                  "MyMFC/12noon.bmp"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "pmsres.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""pmsres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_FINGER              CURSOR                  "MyMFC/Finger.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_KEY                 ICON                    "MyMFC/key.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_PMS_REGISTER        "Please register quality software."
+    PMS_IDS_COMPANYNAME_KEY "12noon"
+    IDS_REG_OK              "Thank you for registering this application."
+    IDS_REG_FAIL            "That is not a valid registration. You may have mistyped the name or key. You may have used an invalid key or a key for a previous version of the application.\n\nPlease try again, contact your system administrator, or contact 12noon for a new key."
+    PMS_IDS_WEB_PMS         "http://12noon.com"
+    IDP_ERR_LAUNCH_BROWSER1 "Unable to open the Web site %1. You can open the Web site by typing its address into your browser manually."
+    PMS_IDS_MAILTO_PMS      "mailto:sales@12noon.com"
+    IDS_BROWSE_REG          "Select Registration File"
+    IDS_FILTERS_REG         "Registrations (*.ini)|*.ini|All Files (*.*)|*.*||"
+    IDS_EXT_REG             "ini"
+    PMS_IDS_WEB_CHECK_UPDATE7 
+                            "http://www.12noon.com/cgi-bin/keys/check_version.pl?os=%1&app=%2&reg=%3!u!&ver=%4!lu!,%5!lu!,%6!lu!,%7!lu!"
+    PMS_IDP_WEB_NO_CXN      "No Internet connection is available. Alarm++ requires an Internet connection in order to check for an update. Please establish an Internet connection and try this command again."
+    IDS_REG_FAIL_VERSION2   "The registration version (%1) doesn't match the application version (%2).\n\nPlease use the registration information for this version of the application. You may need to contact 12noon for new registration information."
+    PMS_IDS_WEB_SITE        "12noon.com"
+END
+
+STRINGTABLE
+BEGIN
+    IDP_MAIL_NOADDRESS      "Unable to open address book. If you use Outlook and only have Contacts, you need to create a Personal Address Book."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INI_VIEW_SORT_COLIX "SortColumnIndex"
+    IDS_INI_VIEW_SORT_ASCENDING "SortAscending"
+    IDS_INI_VIEW_NUM_COLS   "NumberColumns"
+    IDS_INI_VIEW_COL_ORDER1 "ColumnOrder%d"
+    IDS_INI_VIEW_COL_WIDTH1 "ColumnWidth%d"
+    IDS_INI_VIEW_COL_ALIGNMENT1 "ColumnAlignment%d"
+END
+
+STRINGTABLE
+BEGIN
+    IDP_HTTP_VER_FAIL       "Unable to check the version on 12noon Web site. Please try again later."
+    IDP_HTTP_VER_LATEST2    "You are running the latest version of %1, which is %2."
+    IDP_HTTP_VER_OUTOFDATE3 "You are running %1 %2. The latest version of %1 is %3. Would you like to visit the 12noon Web site to upgrade?"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INI_WNDWPLACEMENT_SECTION "WindowPlacementMain"
+    IDS_INI_WNDWPLACEMENT_LEN "WindowPlacementLength"
+    IDS_INI_WNDWPLACEMENT_FGS "WindowPlacementFlags"
+    IDS_INI_WNDWPLACEMENT_SHOW "WindowPlacementShow"
+    IDS_INI_WNDWPLACEMENT_MIN_X "WindowPlacementMinX"
+    IDS_INI_WNDWPLACEMENT_MIN_Y "WindowPlacementMinY"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INI_WNDWPLACEMENT_MAX_X "WindowPlacementMaxX"
+    IDS_INI_WNDWPLACEMENT_MAX_Y "WindowPlacementMaxY"
+    IDS_INI_WNDWPLACEMENT_NORM_L "WindowPlacementNormalLeft"
+    IDS_INI_WNDWPLACEMENT_NORM_T "WindowPlacementNormalTop"
+    IDS_INI_WNDWPLACEMENT_NORM_R "WindowPlacementNormalRight"
+    IDS_INI_WNDWPLACEMENT_NORM_B "WindowPlacementNormalBottom"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
