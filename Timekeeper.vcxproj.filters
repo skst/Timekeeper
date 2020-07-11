@@ -16,6 +16,9 @@
       <UniqueIdentifier>{0b88357b-1fe3-4fd0-a47b-2efd71a83739}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
     </Filter>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{5675780e-2690-4d87-992e-053930a27288}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calendar.h">
@@ -35,6 +38,66 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\GetProcAddress.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\misc.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\stl.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\ToolTipCtrl.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\utility.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\Aboutdlg.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\ColorChooser.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\internal.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\MyLog.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\skstUtil.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\Graphics_MyMFC.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\Graphics_MyWin.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\Registry.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\Pmslib.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\VersionInfo.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\PMSRes.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\StaticColor.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\RegistryMonitor.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\skstTools.h">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Shared\StatLink.h">
+      <Filter>Shared</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,10 +131,16 @@
     <None Include="..\Library\COMtoys\BandObj.rgs" />
     <None Include="Features.txt" />
     <None Include="Timekeeper ToDo.txt" />
+    <None Include="Shared\Finger.cur">
+      <Filter>Shared</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Timekeeper.rc">
       <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="Shared\PMSRes.rc">
+      <Filter>Shared</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,5 +156,52 @@
     <ClCompile Include="StdAfx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shared\misc.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\ToolTipCtrl.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\utility.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\Aboutdlg.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\ColorChooser.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\MyLog.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\Graphics_MyMFC.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\Graphics_MyWin.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\Registry.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\VersionInfo.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\StaticColor.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\RegistryMonitor.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\Helper.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Shared\StatLink.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Shared\12noon.bmp">
+      <Filter>Shared</Filter>
+    </Image>
   </ItemGroup>
 </Project>

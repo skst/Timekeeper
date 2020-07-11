@@ -6,7 +6,7 @@
 
 #include "stdafx.h"
 
-#include "MyWin/Graphics.h"
+#include "Shared/Graphics_MyWin.h"
 
 /*
    Without the Alternate method, calling SetFont() draws the text (in the

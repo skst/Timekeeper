@@ -1,14 +1,14 @@
 //---------------------------------------------------------------------------
-// (c) 2006-2009 12noon, Stefan K. S. Tucker
+// (c) 2006-2020 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 #include "stdafx.h"
 
-#include "MyWin/skstutil.h"
-#include "MyWin/graphics.h"
-#include "MyWin/mylog.h"
+#include "skstutil.h"
+#include "Graphics_MyWIn.h"
+#include "MyLog.h"
 
-#include "MyWin/ToolTipCtrl.h"
+#include "ToolTipCtrl.h"
 using skst::MyToolTipCtrl;
 
 

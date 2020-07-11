@@ -45,46 +45,6 @@ BEGIN
     DEFPUSHBUTTON   "Close",IDOK,184,8,50,14
 END
 
-IDD_PMS_REGISTER DIALOGEX 0, 0, 260, 97
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-EXSTYLE WS_EX_ACCEPTFILES
-CAPTION "Register"
-FONT 8, "MS Sans Serif", 0, 0, 0x1
-BEGIN
-    LTEXT           "&Name:",IDC_STATIC,40,13,22,8
-    EDITTEXT        IDC_PMS_NAME,68,8,124,13,ES_AUTOHSCROLL
-    LTEXT           "&Key:",IDC_STATIC,40,32,16,8
-    EDITTEXT        IDC_PMS_KEY,68,29,124,13,ES_AUTOHSCROLL
-    LTEXT           "You can drag a registration .ini file onto this window instead of clicking Browse to select it.",IDC_STATIC,40,48,152,16
-    DEFPUSHBUTTON   "OK",IDOK,201,8,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,201,28,50,14
-    PUSHBUTTON      "&Browse...",IDC_BROWSE,201,47,50,14
-    ICON            IDI_KEY,IDC_STATIC,8,8,20,20
-    LTEXT           "If the registration code is invalid, there will be a delay before you can try again.",IDC_STATIC,40,72,152,16
-END
-
-IDD_PROGRESS DIALOG 0, 0, 186, 85
-STYLE DS_SETFONT | DS_MODALFRAME | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "(activity)"
-FONT 8, "MS Sans Serif"
-BEGIN
-    LTEXT           "(activity)",IDC_ACTIVITY,8,8,172,16
-    LTEXT           "#%d of %d",IDC_STATUS,8,28,172,8
-    CONTROL         "Progress1",IDC_BAR,"msctls_progress32",WS_BORDER,8,44,172,12
-    DEFPUSHBUTTON   "Cancel",IDCANCEL,68,64,50,14
-END
-
-IDD_PMS_LOG_WINDOW DIALOGEX 0, 0, 395, 111
-STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
-CAPTION "Log"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "Close",IDOK,338,92,50,14
-    PUSHBUTTON      "Erase",IDC_ERASE,4,92,50,14
-    CONTROL         "",IDC_TEXT,"RichEdit20W",WS_VSCROLL | WS_HSCROLL | WS_TABSTOP | 0x884,4,4,384,80,WS_EX_STATICEDGE
-END
-
-
 /////////////////////////////////////////////////////////////////////////////
 //
 // DESIGNINFO
@@ -98,14 +58,6 @@ BEGIN
         RIGHTMARGIN, 242
         BOTTOMMARGIN, 116
     END
-
-    IDD_PMS_LOG_WINDOW, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 388
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 104
-    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -115,7 +67,7 @@ END
 // Bitmap
 //
 
-IDB_12NOON              BITMAP                  "MyMFC/12noon.bmp"
+IDB_12NOON              BITMAP                  "Shared/12noon.bmp"
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -152,16 +104,7 @@ END
 // Cursor
 //
 
-IDC_FINGER              CURSOR                  "MyMFC/Finger.cur"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Icon
-//
-
-// Icon with lowest ID value placed first to ensure application icon
-// remains consistent on all systems.
-IDI_KEY                 ICON                    "MyMFC/key.ico"
+IDC_FINGER              CURSOR                  "Shared/Finger.cur"
 
 /////////////////////////////////////////////////////////////////////////////
 //

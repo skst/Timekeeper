@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------
-// (c) 2003-2009 12noon, Stefan K. S. Tucker
+// (c) 2003-2020 12noon, Stefan K. S. Tucker
 // (c) 2001-2002 Perpetual Motion Software, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 #pragma once
 
-#include "MyWin/MyLog.h"
+#include "Shared/MyLog.h"
 
 namespace skst
 {

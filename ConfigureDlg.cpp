@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------
-// (c) 2006 12noon, Stefan K. S. Tucker
+// (c) 2006-2020 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 #include "stdafx.h"
 
-#include "MyWin/graphics.h"
-#include "MyMFC/ColorChooser.h"
+#include "Shared/Graphics_MyWin.h"
+#include "Shared/ColorChooser.h"
 
 #include "ConfigureDlg.h"
 

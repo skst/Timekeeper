@@ -13,44 +13,24 @@
 #include <shlwapi.h>
 #pragma comment(lib,"shlwapi.lib")
 
-#include "MyWin/stl.h"
-#include "MyWin/skstutil.h"
+#include "Shared/stl.h"
+#include "Shared/skstUtil.h"
 
-#include "MyMFC/myassert.h"
-#include "MyMFC/pmsres.h"
-#include "MyMFC/pmsliblink.h"
+#include "Shared/PMSRes.h"
 
 #pragma comment(lib, "version.lib")
 
 /////////////////////////////////////////////////////////////////////////////
 // PMS Namespace
 
-#include "buttonbrowse.h"
 
 namespace PMS
 {
 
-#include "memorydc.h"
-
 /////////////////////////////////////////////////////////////////////////////
 // Miscellaneous functions
 
-extern   CString  GetFolderPathMyDocuments();
-extern	CString	GetFolderPathDesktop();
-
-extern   CString	BinStrToHexCStr(tstring s);
-extern   tstring	HexCStrToBinStr(const CString& s);
-
-extern   CString  AddCommas(CString& s);
-extern   CString  FormatNumberWithCommas(const int n);
-extern   void     PMSDrawBitmap(CDC *pdc, int iWidth, CBitmap *pcBmp);
-
 extern   bool     OpenURL(LPCTSTR szURL);
-
-extern   CString  BrowseForFileWithControl(CWnd& wnd, const UINT idDefExt, const UINT idFilters, const UINT idTitle, const DWORD fgsExtra);
-extern   CString  BrowseForFile(LPCTSTR szPath, CWnd& wndParent, const UINT idDefExt, const UINT idFilters, const UINT idTitle, const DWORD fgsExtra);
-extern   void     InvokeMenuCmd(CWnd *pWnd, const int idCmd);
-extern   void     DisplayPopupMenu(CWnd *pWnd, const UINT idMenu, const UINT idDefaultCmd, const CPoint *pPoint);
 
 //--------------------
 // About box function

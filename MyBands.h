@@ -1,14 +1,14 @@
 //---------------------------------------------------------------------------
-// (c) 2006-2014 12noon, Stefan K. S. Tucker
+// (c) 2006-2020 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 #pragma once
 
-#include "MyWin/ToolTipCtrl.h"
+#include "Shared/ToolTipCtrl.h"
 
 #include "COMtoys/BandObj.h"
 
-#include "MyMFC/StaticColor.h"
+#include "Shared/StaticColor.h"
 
 #include "Calendar.h"
 #include "ConfigureDlg.h"

@@ -113,49 +113,6 @@ tstring skst::GetLocalPath(const HINSTANCE hInst, LPCTSTR szFilename)
 }
 
 
-/*
-   This routine returns a string to represent a system error.
-*/
-tstring skst::GetLastErrorString()
-{
-   HLOCAL hBuf;
-   ::FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, nullptr,
-                  ::GetLastError(), 0, (LPTSTR) &hBuf, 1, nullptr);
-   LPTSTR szBuf = (LPTSTR) ::LocalLock(hBuf);
-   tstring strBuf(szBuf);
-   ::LocalUnlock(hBuf);
-   ::LocalFree(hBuf);
-   return strBuf;
-}
-
-/*
-   This routine returns a string to represent a common dialog extended error.
-*/
-tstring skst::GetCommDlgExtendedErrorString()
-{
-   switch (::CommDlgExtendedError())
-   {
-      case 0:                       return _T("No error");
-      case CDERR_DIALOGFAILURE:     return _T("CDERR_DIALOGFAILURE");
-      case CDERR_FINDRESFAILURE:    return _T("CDERR_FINDRESFAILURE");
-      case CDERR_INITIALIZATION:    return _T("CDERR_INITIALIZATION");
-      case CDERR_LOADRESFAILURE:    return _T("CDERR_LOADRESFAILURE");
-      case CDERR_LOADSTRFAILURE:    return _T("CDERR_LOADSTRFAILURE");
-      case CDERR_LOCKRESFAILURE:    return _T("CDERR_LOCKRESFAILURE");
-      case CDERR_MEMALLOCFAILURE:   return _T("CDERR_MEMALLOCFAILURE");
-      case CDERR_MEMLOCKFAILURE:    return _T("CDERR_MEMLOCKFAILURE");
-      case CDERR_NOHINSTANCE:       return _T("CDERR_NOHINSTANCE");
-      case CDERR_NOHOOK:            return _T("CDERR_NOHOOK");
-      case CDERR_NOTEMPLATE:        return _T("CDERR_NOTEMPLATE");
-      case CDERR_REGISTERMSGFAIL:   return _T("CDERR_REGISTERMSGFAIL");
-      case CDERR_STRUCTSIZE:        return _T("CDERR_STRUCTSIZE");
-      case FNERR_BUFFERTOOSMALL:    return _T("FNERR_BUFFERTOOSMALL");
-      case FNERR_SUBCLASSFAILURE:   return _T("FNERR_SUBCLASSFAILURE");
-      default:                      return _T("UNKNOWN");
-   }
-}
-
-
 //---------------------------------------------------------------------------
 /*
    This routine returns the specified locale information.

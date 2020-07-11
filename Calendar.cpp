@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
-#include "MyWin/Graphics.h"
-#include "MyWin/Utility.h"
+#include "Shared/Graphics_MyWin.h"
+#include "Shared/Utility.h"
 
 #include "Calendar.h"
 

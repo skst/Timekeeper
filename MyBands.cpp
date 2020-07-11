@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-// (c) 2006-2014 12noon, Stefan K. S. Tucker
+// (c) 2006-2020 12noon, Stefan K. S. Tucker
 //---------------------------------------------------------------------------
 
 /*
@@ -36,12 +36,11 @@
 #include "COMtoys/Debug.h"
 #include "COMtoys/IniFile.h"
 #include "COMtoys/COMtoysLink.h"
-#include "TraceWin40/TraceWin.h"
+//#include "TraceWin40/TraceWin.h"
 
-#include "MyMFC/aboutdlg.h"
-#include "MyMFC/graphics.h"
+#include "Shared/Graphics_MyMFC.h"
 
-#include "MyWin/misc.h"
+#include "Shared/misc.h"
 
 #include "MyBands.h"
 #include "resource.h"

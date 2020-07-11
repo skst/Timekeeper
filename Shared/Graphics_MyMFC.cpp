@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include <windowsx.h>
 
-#include "graphics.h"
+#include "Graphics_MyMFC.h"
 
 /*
    Calculate the size (in pixels) of a passed string for a passed font.

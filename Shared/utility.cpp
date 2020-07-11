@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 
+#include "skstUtil.h"
 #include "utility.h"
 
 /*

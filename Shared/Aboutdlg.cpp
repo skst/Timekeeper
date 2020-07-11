@@ -7,7 +7,7 @@
 #include "stdafx.h"
 #include <winver.h>
 
-#include "MyWin/VersionInfo.h"
+#include "Shared/VersionInfo.h"
 
 #include "aboutdlg.h"
 
@@ -72,7 +72,7 @@ CAboutDlg::CAboutDlg(HINSTANCE hAppInst,
    else if (!bRegString)
       m_cExtraString = cReg;
    else
-      m_cExtraString = "Registered to " + cReg;
+      m_cExtraString = CString("Registered to ") + cReg;
 
    //{{AFX_DATA_INIT(CAboutDlg)
       // NOTE: the ClassWizard will add member initialization here

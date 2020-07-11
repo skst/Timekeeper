@@ -4,16 +4,10 @@
 
 #pragma once
 
-#include "breakpoint.h"
 #include "misc.h"
-#include "versions.h"
 #include "mylog.h"
-#include "myhandle.h"
 #include "versioninfo.h"
-#include "registrar.h"
-#include "shelllink.h"
 #include "registry.h"
-//#include "activedesktop.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // skst Namespace

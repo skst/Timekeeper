@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "MyWin/registry.h"
+#include "Shared/Registry.h"
 
 namespace PMS
 {

@@ -5,9 +5,9 @@
 
 #pragma once
 
-#include "pmslib.h"
-#include "pmsres.h"
-#include "statlink.h"
+#include "PMSlib.h"
+#include "PMSRes.h"
+#include "StatLink.h"
 
 class CAboutDlg : public CDialog
 {

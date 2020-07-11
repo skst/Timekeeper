@@ -85,7 +85,7 @@ void MyLog::Construct()
       LogV(_T("\tModified: %s"), dt.Format().c_str());
    }
 
-   skst::TraceVersions();
+   //skst::TraceVersions();
 
    /*
       Display language information

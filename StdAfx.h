@@ -35,5 +35,5 @@
 #include <afxdisp.h>        // For COleDateTime (in afxcomtime.h)
 #include <afxpriv.h>        // For Unicode conversion macros
 
-#include "MyWin/stl.h"
+#include "Shared/stl.h"
 #include <afxdtctl.h>

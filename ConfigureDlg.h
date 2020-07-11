@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MyMFC/pmslib.h"
-#include "MyMFC/StaticColor.h"
-#include "MyMFC/RegistryMonitor.h"
+#include "Shared/Pmslib.h"
+#include "Shared/StaticColor.h"
+#include "Shared/RegistryMonitor.h"
 
 #include "resource.h"
 

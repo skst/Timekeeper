@@ -112,7 +112,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Library;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -141,7 +141,7 @@
       <AdditionalDependencies>delayimp.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -177,7 +177,7 @@ rem )
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Library;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -206,7 +206,7 @@ rem )
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -240,7 +240,7 @@ rem )
       <TypeLibraryName>.\Release/Timekeeper.tlb</TypeLibraryName>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Library;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -266,7 +266,7 @@ rem )
       <AdditionalDependencies>delayimp.lib</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
@@ -286,7 +286,7 @@ rem )
       <TypeLibraryName>.\Release/Timekeeper.tlb</TypeLibraryName>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\Library;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -311,7 +311,7 @@ rem )
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\Library\COMToys\Lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)COMToys\Lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>.\$(TargetName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>oleacc.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
@@ -327,6 +327,26 @@ rem )
     <ClInclude Include="Calendar.h" />
     <ClInclude Include="ConfigureDlg.h" />
     <ClInclude Include="MyBands.h" />
+    <ClInclude Include="Shared\Aboutdlg.h" />
+    <ClInclude Include="Shared\ColorChooser.h" />
+    <ClInclude Include="Shared\GetProcAddress.h" />
+    <ClInclude Include="Shared\Graphics_MyMFC.h" />
+    <ClInclude Include="Shared\Graphics_MyWin.h" />
+    <ClInclude Include="Shared\internal.h" />
+    <ClInclude Include="Shared\misc.h" />
+    <ClInclude Include="Shared\MyLog.h" />
+    <ClInclude Include="Shared\Pmslib.h" />
+    <ClInclude Include="Shared\PMSRes.h" />
+    <ClInclude Include="Shared\Registry.h" />
+    <ClInclude Include="Shared\RegistryMonitor.h" />
+    <ClInclude Include="Shared\skstTools.h" />
+    <ClInclude Include="Shared\skstUtil.h" />
+    <ClInclude Include="Shared\StaticColor.h" />
+    <ClInclude Include="Shared\StatLink.h" />
+    <ClInclude Include="Shared\stl.h" />
+    <ClInclude Include="Shared\ToolTipCtrl.h" />
+    <ClInclude Include="Shared\utility.h" />
+    <ClInclude Include="Shared\VersionInfo.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="targetver.h" />
@@ -342,18 +362,34 @@ rem )
     <None Include="help\Timekeeper.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="Shared\Finger.cur" />
     <None Include="Timekeeper.def" />
     <None Include="..\Library\COMtoys\BandObj.rgs" />
     <None Include="Features.txt" />
     <None Include="Timekeeper ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shared\PMSRes.rc" />
     <ResourceCompile Include="Timekeeper.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Calendar.cpp" />
     <ClCompile Include="ConfigureDlg.cpp" />
     <ClCompile Include="MyBands.cpp" />
+    <ClCompile Include="Shared\Aboutdlg.cpp" />
+    <ClCompile Include="Shared\ColorChooser.cpp" />
+    <ClCompile Include="Shared\Graphics_MyMFC.cpp" />
+    <ClCompile Include="Shared\Graphics_MyWin.cpp" />
+    <ClCompile Include="Shared\Helper.cpp" />
+    <ClCompile Include="Shared\misc.cpp" />
+    <ClCompile Include="Shared\MyLog.cpp" />
+    <ClCompile Include="Shared\Registry.cpp" />
+    <ClCompile Include="Shared\RegistryMonitor.cpp" />
+    <ClCompile Include="Shared\StaticColor.cpp" />
+    <ClCompile Include="Shared\StatLink.cpp" />
+    <ClCompile Include="Shared\ToolTipCtrl.cpp" />
+    <ClCompile Include="Shared\utility.cpp" />
+    <ClCompile Include="Shared\VersionInfo.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -362,18 +398,12 @@ rem )
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library\COMToys\ComToys.vcxproj">
+    <ProjectReference Include="COMToys\ComToys.vcxproj">
       <Project>{c37df566-a97f-4e69-9edc-6bf670251441}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Library\MyMFC\MyMFC.vcxproj">
-      <Project>{f8dccca3-8eae-40e8-8a8d-a4494f555d80}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\MyWin\MyWin.vcxproj">
-      <Project>{45b208ae-c132-47ca-8d72-e24a2a27c20a}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Shared\12noon.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

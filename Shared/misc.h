@@ -41,14 +41,6 @@ namespace skst
 //#pragma EMIT_VALUE(_WIN32_IE)
 
 
-//Remove for Visual Studio 2005
-// From afximpl.h
-// determine number of elements in an array (not bytes)
-//// From afximpl.h
-//// determine number of elements in an array (not bytes)
-//#define _countof(array) (sizeof(array)/sizeof(array[0]))
-
-
 /////////////////////////////////////////////////////////////////////////////
 // Miscellaneous functions
 
@@ -59,9 +51,6 @@ extern   tstring		GetAppPathOnly(const HINSTANCE hInst);
 extern   tstring		GetAppOnly(const HINSTANCE hInst);
 extern   tstring		GetFileNameWithNewExtension(const HINSTANCE hInst, LPCTSTR szExt);
 extern   tstring		GetLocalPath(const HINSTANCE hInst, LPCTSTR szFilename);
-
-extern   tstring		GetLastErrorString();
-extern   tstring		GetCommDlgExtendedErrorString();
 
 extern   tstring		GetLocaleInfoString(LCTYPE lcType);
 extern   tstring		GetDroppedFilePath(HDROP h, UINT ix);

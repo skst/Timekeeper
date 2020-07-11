@@ -14,7 +14,7 @@
 #include <atliface.h>                           //skst
 #include "COMtoys/BandObj.h"                    //skst
 
-#include "MyWin/getprocaddress.h"               //skst
+#include "Shared/GetProcAddress.h"              //skst
 
 #define BANDOBJCLASS _T("DeskBandClass")        //skst
 
