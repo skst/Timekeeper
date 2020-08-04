@@ -1,0 +1,63 @@
+desktop.ini
+Thumbs.db
+
+*.aps
+*.bak
+*.clw
+*.db
+*.diff
+*.dll
+*.dmp
+*.docstates
+*.exe
+*.ipch
+*.json
+*.lib
+*.lnk
+*.log
+*.opendb
+*.patch
+*.pdb
+*.pdf
+*.pfx
+*.psess
+*.resx
+*.sdf
+*.suo
+*.url
+*.user
+*.vc.db
+*.vs10x
+*.zip
+* - Copy.*
+* - Copy (?).*
+
+**/.vs/
+**/Win32/
+**/x64/
+**/x86/
+**/amd64/
+**/ipch/
+**/Debug/
+**/Debug Console/
+**/Release/
+**/Release Console/
+**/obj/
+**/bin/
+**/AppPackages/
+**/TestResults/
+**/Generated Files/
+
+TimekeeperUnregister.reg
+Timekeeper_default.reg
+res/BandEnable SMALLER.pdn
+
+help/Windows 2000/
+help/Windows XP/
+installer/files*/
+TestFormat/
+USR_DeskBand/
+
+#
+#	Added by SourceTree
+#
