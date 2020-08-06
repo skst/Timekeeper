@@ -130,17 +130,16 @@
     </None>
     <None Include="..\Library\COMtoys\BandObj.rgs" />
     <None Include="Features.txt" />
-    <None Include="Timekeeper ToDo.txt" />
     <None Include="Shared\Finger.cur">
       <Filter>Shared</Filter>
+    </None>
+    <None Include="Shared\PMSRes.rc">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Timekeeper.rc">
       <Filter>Resource Files</Filter>
-    </ResourceCompile>
-    <ResourceCompile Include="Shared\PMSRes.rc">
-      <Filter>Shared</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>

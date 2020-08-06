@@ -366,7 +366,6 @@ rem )
     <None Include="Timekeeper.def" />
     <None Include="..\Library\COMtoys\BandObj.rgs" />
     <None Include="Features.txt" />
-    <None Include="Timekeeper ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shared\PMSRes.rc" />
