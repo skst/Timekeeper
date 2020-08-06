@@ -62,8 +62,8 @@ If we change the font to something smaller, the calendar is not resized.
 The band must be closed and re-opened to see the new size. This is a
 Windows limitation.
 
-For some reason, one Windows XP system that Timekeeper has been tested on
-did not have atl.dll registered propertly. In this case, Timekeeper caused
+For some reason, one Windows system that Timekeeper has been tested on did
+not have atl.dll registered propertly. In this case, Timekeeper caused
 Explorer to hang. The solution is to register atl.dll with regsvr32.exe.
 
       regsvr32.exe atl.dll
