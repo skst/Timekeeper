@@ -17,7 +17,7 @@ namespace MyMFC
 class StaticColor : public CStatic
 {
 public:
-   enum EColor
+   enum class EColor
    {
       COLOR_DEFAULT,       // the color is the corresponding Windows system color
       COLOR_SET,           // the color is specified
@@ -35,7 +35,8 @@ public:
    StaticColor()
    {
       _bTextColorSet = false;
-      _eBgColor = COLOR_DEFAULT;
+      _rgbText = 0x0000'0000;
+      _eBgColor = EColor::COLOR_DEFAULT;
    }
    virtual ~StaticColor() {}
 

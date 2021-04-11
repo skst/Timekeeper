@@ -13,7 +13,8 @@
 extern "C"
 {
 
-STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
+_Check_return_
+STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID FAR* ppv)
 {
 	MFCENTRY;
 	CTCHECKARG(ppv);
@@ -23,7 +24,8 @@ STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
 	return sc;
 }
 
-STDAPI DllCanUnloadNow(void)
+__control_entrypoint(DllExport)
+STDAPI DllCanUnloadNow()
 {
 	MFCENTRYTR("DllCanUnloadNow\n");
 	HRESULT hr = CTModule::GetModule()->OnCanUnloadNow();
@@ -37,13 +39,13 @@ STDAPI DllRegisterServer()
 	return CTModule::GetModule()->OnRegisterServer(TRUE);
 }
 
-STDAPI DllUnregisterServer(void)
+STDAPI DllUnregisterServer()
 {
 	MFCENTRYTR("DllUnregisterServer\n");
 	return CTModule::GetModule()->OnRegisterServer(FALSE);
 }
 
-STDAPI DllInstall(BOOL bInstall, LPCWSTR pszCmdLine)
+STDAPI DllInstall(BOOL bInstall, _In_opt_ LPCWSTR pszCmdLine)
 {
 	MFCENTRYTR("DllInstall\n");
 	return CTModule::GetModule()->OnInstall(bInstall, pszCmdLine);

@@ -78,7 +78,7 @@ void MyMFC::StaticColor::SetBgColorDefault()
 {
    _brushBG.DeleteObject();
 
-   _eBgColor = COLOR_DEFAULT;
+   _eBgColor = EColor::COLOR_DEFAULT;
 
    Invalidate(FALSE);
 }
@@ -93,7 +93,7 @@ void MyMFC::StaticColor::SetBgColorTransparent()
 {
    _brushBG.DeleteObject();
 
-   _eBgColor = COLOR_TRANSPARENT;
+   _eBgColor = EColor::COLOR_TRANSPARENT;
    _brushBG.CreateStockObject(NULL_BRUSH);
 
    DrawParentBackground();
@@ -108,7 +108,7 @@ void MyMFC::StaticColor::SetBgColor(const COLORREF rgb)
 {
    _brushBG.DeleteObject();
 
-   _eBgColor = COLOR_SET;
+   _eBgColor = EColor::COLOR_SET;
    _brushBG.CreateSolidBrush(rgb);
 
    Invalidate(FALSE);
@@ -130,7 +130,7 @@ void MyMFC::StaticColor::SetBgColor(const COLORREF rgb)
 void MyMFC::StaticColor::SetWindowText(LPCTSTR sz)
 {
    // if the bg is NOT transparent, just set the text normally
-   if (_eBgColor != COLOR_TRANSPARENT)
+   if (_eBgColor != EColor::COLOR_TRANSPARENT)
    {
       CStatic::SetWindowText(sz);
       return;
@@ -193,7 +193,7 @@ HBRUSH MyMFC::StaticColor::CtlColor(CDC* pDC, UINT nCtlColor)
             so that we handle the msg (else text color is ignored).
    */
    HBRUSH hBrush;
-   if (_eBgColor == COLOR_DEFAULT)
+   if (_eBgColor == EColor::COLOR_DEFAULT)
       hBrush = (HBRUSH) Default();  // can't call CStatic::OnCtlColor (recursive)
    else
       hBrush = _brushBG;

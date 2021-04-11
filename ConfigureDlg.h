@@ -22,7 +22,7 @@ class ConfigureDlg : public CDialog
 	DECLARE_DYNAMIC(ConfigureDlg)
 
 public:
-   enum Alignment
+   enum class Alignment
    {
       ALIGN_LEFT   = SS_LEFT,
       ALIGN_CENTER = SS_CENTER,

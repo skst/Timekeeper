@@ -693,17 +693,12 @@ void CBandObj::NotifyBandInfoChanged()
       return;
    }
 
-   VARIANT pvaIn;
+   VARIANT pvaIn{};
    pvaIn.vt = VT_I4;
    pvaIn.lVal = m_dwBandID;
-   VARIANT pvaOut;
-   //hr = pCmdTarget->Exec(&CGID_DeskBand, DBID_BANDINFOCHANGED, OLECMDEXECOPT_DONTPROMPTUSER, &pvaIn, &pvaOut);
-   const HRESULT hr = spCmd->Exec(&CGID_DeskBand, DBID_BANDINFOCHANGED, OLECMDEXECOPT_DONTPROMPTUSER, &pvaIn, &pvaOut);
+   const HRESULT hr = spCmd->Exec(&CGID_DeskBand, DBID_BANDINFOCHANGED, OLECMDEXECOPT_DONTPROMPTUSER, &pvaIn, /*VARIANT *pvaOut*/ NULL);
    if (!SUCCEEDED(hr))
       TRACE(_T("IOleCommandTarget failed\n"));
-
-   //pCmdTarget->Release();
-   //pCmdTarget = NULL;
 }
 //////////////////////////////////////////////////////////////////////////////
 

@@ -759,7 +759,7 @@ void CMyDeskBand::FormatClock()
    /*
       set the clock's style
    */
-   _ctlClock.ModifyStyle(SS_LEFT | SS_CENTER | SS_RIGHT, _dlgConfiguration.GetAlignmentStyle());
+   _ctlClock.ModifyStyle(SS_LEFT | SS_CENTER | SS_RIGHT, (DWORD)_dlgConfiguration.GetAlignmentStyle());
 
    /*
       replace current clock font with the new one

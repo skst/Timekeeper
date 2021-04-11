@@ -173,7 +173,7 @@ public:
    void AddStringData(LPCTSTR sz, const E& data)
    {
       const UINT ix = AddString(sz);
-      SetItemData(ix, data);
+      SetItemData(ix, (DWORD_PTR)data);
    }
 
    /*

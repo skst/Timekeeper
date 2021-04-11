@@ -129,9 +129,9 @@ BOOL ConfigureDlg::OnInitDialog()
    ((CButton*) GetDlgItem(IDC_FORMATS))->SetBitmap(hBmpArrowR);
 
    // set up controls
-   _ctlAlignment.AddStringData(IDS_ALIGN_LEFT, ALIGN_LEFT);
-   _ctlAlignment.AddStringData(IDS_ALIGN_CENTER, ALIGN_CENTER);
-   _ctlAlignment.AddStringData(IDS_ALIGN_RIGHT, ALIGN_RIGHT);
+   _ctlAlignment.AddStringData(IDS_ALIGN_LEFT, Alignment::ALIGN_LEFT);
+   _ctlAlignment.AddStringData(IDS_ALIGN_CENTER, Alignment::ALIGN_CENTER);
+   _ctlAlignment.AddStringData(IDS_ALIGN_RIGHT, Alignment::ALIGN_RIGHT);
 
    _ctlSwatchText.SubclassDlgItem(IDC_COLOR_TEXT_SWATCH, this);
    /*
@@ -270,7 +270,7 @@ void ConfigureDlg::OnOK()
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG_DEFAULT)), _bColorDefaultBG);
    ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_COLOR_BG)), _crColorBG);
 
-   ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), _eAlignmentStyle);
+   ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_ALIGNMENT)), (int)_eAlignmentStyle);
 }
 
 
@@ -313,7 +313,7 @@ UINT_PTR CALLBACK ConfigureDlg::FctHookFontDlg(HWND hdlg, UINT uiMsg, WPARAM wPa
       // hardcode id of Apply button (Microsoft doesn't tell us the id. Thanks, Microsoft.)
       if (wParam == WM_USER + 2)
       {
-         LOGFONT lf;
+         LOGFONT lf{};
          ::SendMessage(hdlg, WM_CHOOSEFONT_GETLOGFONT, 0, (LPARAM) &lf);
          ASSERT(_pDlgFontPicker != NULL);
          _pDlgFontPicker->OnFontApply(lf);
@@ -466,7 +466,7 @@ inline CString My_COleDateTime_Format(const COleDateTime& odt, LPCTSTR pFormat)
 		return szInvalidDateTime;
 	}
 
-	struct tm tmTemp;
+	struct tm tmTemp{};
 	tmTemp.tm_sec	= ud.st.wSecond;
 	tmTemp.tm_min	= ud.st.wMinute;
 	tmTemp.tm_hour	= ud.st.wHour;
@@ -699,7 +699,7 @@ void ConfigureDlg::FormatStaticControl(MyMFC::StaticColor& ctl, const Alignment&
    /*
       styles
    */
-   ctl.ModifyStyle(SS_LEFT | SS_CENTER | SS_RIGHT, eAlignmentStyle);
+   ctl.ModifyStyle(SS_LEFT | SS_CENTER | SS_RIGHT, (DWORD)eAlignmentStyle);
    ctl.Invalidate();
 
    // use this font
