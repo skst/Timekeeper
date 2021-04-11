@@ -730,7 +730,7 @@ BOOL CMyDeskBand::OnToolTipNotify(UINT id, NMHDR *pNMHDR, LRESULT *pResult)
       tooltip is long date/time format
    */
    const CString str(COleDateTime::GetCurrentTime().Format(_T("%#c")));
-   ::_tcscpy_s(pttDispInfo->szText, sizeof pttDispInfo->szText, str);
+   ::_tcscpy_s(pttDispInfo->szText, _countof(pttDispInfo->szText), str);
 
    return TRUE;
 }
