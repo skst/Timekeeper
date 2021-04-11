@@ -63,7 +63,7 @@ The band must be closed and re-opened to see the new size. This is a
 Windows limitation.
 
 For some reason, one Windows system that Timekeeper has been tested on did
-not have atl.dll registered propertly. In this case, Timekeeper caused
+not have atl.dll registered properly. In this case, Timekeeper caused
 Explorer to hang. The solution is to register atl.dll with regsvr32.exe.
 
       regsvr32.exe atl.dll
@@ -73,16 +73,8 @@ Explorer to hang. The solution is to register atl.dll with regsvr32.exe.
 
 Multiple times--for specified time zones?
 
-Make double-click select Configure Clock command (Windows can't detect difference btwn single and double)
-
 Calendar: remember last selected date
 
 Add analog clock to band
 
 Option to not auto-size band (or to just not reduce size after configuring clock)
-
-Other data:
-   memory used
-   cpu (minus top consumer, so ignores SETI/folding/etc)
-   disk space
-   plug-in architecture for custom data
