@@ -30,7 +30,7 @@ MyToolTipCtrl::Instances MyToolTipCtrl::_instances;
 MyToolTipCtrl::MyToolTipCtrl(const bool bOnlyShowTipsIfActive)
    : _bOnlyShowTipsIfActive(bOnlyShowTipsIfActive)
 {
-	INITCOMMONCONTROLSEX icx;
+   INITCOMMONCONTROLSEX icx{};
 	icx.dwSize = sizeof icx;
 	icx.dwICC = ICC_BAR_CLASSES;
    ::InitCommonControlsEx(&icx);
@@ -103,7 +103,7 @@ void MyToolTipCtrl::DeleteTools()
 {
    while (GetToolCount() > 0)
    {
-      TOOLINFO ti;
+      TOOLINFO ti{};
       ti.cbSize = sizeof ti;
       ti.lpszText = nullptr;
       ::SendMessage(m_hWnd, TTM_ENUMTOOLS, 0, (LPARAM) &ti);
@@ -114,7 +114,7 @@ void MyToolTipCtrl::DeleteTools()
 
 void MyToolTipCtrl::DeleteTool(const HWND hWndSink, const UINT_PTR id)
 {
-	TOOLINFO ti;
+   TOOLINFO ti{};
 	ti.cbSize = sizeof ti;
 	ti.hwnd = hWndSink;
    ti.uFlags = 0;
@@ -184,7 +184,7 @@ void MyToolTipCtrl::AddTool(const bool bTrack, const HWND hWndControl, HWND hWnd
    if (hWndSink == nullptr)
       hWndSink = hWndControl;
 
-	TOOLINFO ti;
+	TOOLINFO ti{};
 	ti.cbSize = sizeof ti;
 	ti.hwnd = hWndSink;
    if (bTrack)
@@ -300,7 +300,7 @@ bool MyToolTipCtrl::HitTooltipControl(HWND hWnd, const POINT& pt)
    skst::MyLog::GetLog().LogV("\tTooltip control has %d tools\n", GetToolCount());
 #endif
 
-   TOOLINFO ti;
+   TOOLINFO ti{};
    ti.cbSize = sizeof ti;
    for (int i = 0; i < GetToolCount(); ++i)
    {
@@ -343,7 +343,7 @@ bool MyToolTipCtrl::HitTooltipControl(HWND hWnd, const POINT& pt)
       has an active tool, we deactivate it (because this tool/control is
       no longer hit).
    */
-   TOOLINFO tiCur;
+   TOOLINFO tiCur{};
    tiCur.cbSize = sizeof tiCur;
    tiCur.lpszText = nullptr;
    if (::SendMessage(m_hWnd, TTM_GETCURRENTTOOL, 0, (LPARAM) &tiCur))
@@ -466,7 +466,7 @@ void MyToolTipCtrl::ActivateTooltip(const TOOLINFO& ti, bool bActivate)
          If they're different, we've switched to a new tool so we
          deactivate the old one.
       */
-      TOOLINFO tiCur;
+      TOOLINFO tiCur{};
       tiCur.cbSize = sizeof tiCur;
       tiCur.lpszText = nullptr;
       if (::SendMessage(m_hWnd, TTM_GETCURRENTTOOL, 0, (LPARAM) &tiCur))
