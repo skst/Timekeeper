@@ -352,6 +352,7 @@ rem )
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="readme.md" />
     <None Include="res\about.ico" />
     <None Include="res\arrow_r.bmp" />
     <None Include="res\BandEnable.bmp" />
@@ -365,7 +366,6 @@ rem )
     <None Include="Shared\Finger.cur" />
     <None Include="Timekeeper.def" />
     <None Include="..\Library\COMtoys\BandObj.rgs" />
-    <None Include="Features.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shared\PMSRes.rc" />

@@ -6,6 +6,7 @@ Thumbs.db
 *.diff
 *.exe
 *.lib
+*.pdb
 *.user
 
 **/.vs/

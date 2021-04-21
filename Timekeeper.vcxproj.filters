@@ -129,12 +129,14 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="..\Library\COMtoys\BandObj.rgs" />
-    <None Include="Features.txt" />
     <None Include="Shared\Finger.cur">
       <Filter>Shared</Filter>
     </None>
     <None Include="Shared\PMSRes.rc">
       <Filter>Source Files</Filter>
+    </None>
+    <None Include="readme.md">
+      <Filter>Help Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
