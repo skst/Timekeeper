@@ -1,4 +1,4 @@
-# 12noon Timekeeper
+# 12noon Timekeeper [![MSBuild](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml/badge.svg)](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml)
 
 A desktop tool to display the current date/time on the Windows
 task bar in your custom format.
