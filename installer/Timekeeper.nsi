@@ -38,6 +38,7 @@
 	!define gVerInstaller		"0.0.0.0"			# Pass on the command line
 !endif
 
+Unicode true
 
 #	64-bit support
 #Var b64bit
@@ -155,8 +156,8 @@ Section "${gProductName}" sectionMain
 	#
 	#	Documents for all products
 	#
-	File /nonfatal "..\..\License.txt"
-	File /nonfatal "..\..\Warranty.txt"
+	File /nonfatal "License.txt"
+	File /nonfatal "Warranty.txt"
 
 	#
 	# Application files

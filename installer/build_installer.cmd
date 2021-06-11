@@ -8,9 +8,6 @@ echo.
 echo Remember to set the version in this script...
 echo Version set to %versionApp%.
 echo.
-rem http://support.microsoft.com/kb/913111
-..\SysInternals\sigcheck..\Win32\Release\Timekeeper.dll
-..\SysInternals\sigcheck ..\x64\Release\Timekeeper.dll
 pause
 
 cd "%~dp0"
@@ -21,15 +18,15 @@ del /q files\*.*
 
 copy /y ..\Win32\Release\Timekeeper.dll	files
 copy /y ..\x64\Release\Timekeeper.dll		files\Timekeeper64.dll
-copy /y ..\help\*.png							files
 copy /y ..\help\*.htm							files
+copy /y ..\help\*.png							files
 copy /y ..\help\*.gif							files
 
 attrib -r files\*.*
 
 if EXIST timekeeper-setup.exe del /q timekeeper-setup.exe
 
-set pathEXE=..\NSIS3\makensis.exe
+set pathEXE=makensis.exe
 if not exist "%pathEXE%" (
 	echo.
 	echo Unable to find NSIS. Please install from http://nsis.sourceforge.net.
@@ -37,6 +34,6 @@ if not exist "%pathEXE%" (
 	goto :EOF
 )
 
-"%pathEXE%" -DgVerInstaller=%versionApp% Timekeeper.nsi 
+"%pathEXE%" -DgVerInstaller=%versionApp% Timekeeper.nsi
 
 endlocal

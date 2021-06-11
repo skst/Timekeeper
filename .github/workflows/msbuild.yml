@@ -37,17 +37,150 @@ jobs:
         uses: microsoft/setup-msbuild@v1
   
       - name: Restore NuGet packages
-        working-directory: ${{env.GITHUB_WORKSPACE}}
         run: nuget restore ${{env.SOLUTION_FILE_PATH}}
   
       - name: Build 32-bit
-        working-directory: ${{env.GITHUB_WORKSPACE}}
         # Add additional options to the MSBuild command line here (like platform or verbosity level).
         # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
         run: msbuild /m /p:Platform="Win32" /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
   
       - name: Build 64-bit
-        working-directory: ${{env.GITHUB_WORKSPACE}}
         # Add additional options to the MSBuild command line here (like platform or verbosity level).
         # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
         run: msbuild /m /p:Platform="x64" /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+
+      - name: Copy deliverables
+        working-directory: ./installer
+        shell: cmd
+        run: |
+          md files
+          copy /y ..\Win32\Release\Timekeeper.dll	files
+          copy /y ..\x64\Release\Timekeeper.dll		files\Timekeeper64.dll
+          copy /y ..\help\*.htm						files
+          copy /y ..\help\*.png						files
+          copy /y ..\help\*.gif						files
+          attrib -r files\*.*
+
+      # Upload release artifact to share with next job
+      # https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts#about-workflow-artifacts
+      # https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Upload installer files folder as a build artifact
+        uses: actions/upload-artifact@v2.2.3
+        with:
+          name: publish-build
+          path: ./installer/files/
+          retention-days: 1
+        # Use always() to always run this step even when there are failures
+        #if: ${{ always() }}
+
+  # Jobs are run in parallel unless `needs` is specified.
+  # https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs
+  version:
+    needs: build
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
+    outputs:
+      TagNoV: ${{ steps.StepTagNoV.outputs.new_tag }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      # https://github.com/marketplace/actions/github-tag-bump
+      # We want to use the tag without the 'v' prefix for the release name.
+      # The action does not output that, so we perform a dry run to get the tag without 'v'.
+      - name: Get tag without 'v' prefix
+        id: StepTagNoV
+        uses: anothrNick/github-tag-action@1.34.0
+        env:
+          DRY_RUN: true
+          DEFAULT_BUMP: none
+          WITH_V: false
+
+  package:
+    needs: version
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      # Download publish artifact from previous job
+      # https://github.com/marketplace/actions/download-a-build-artifact
+      - name: Download deployment folder as a build artifact
+        uses: actions/download-artifact@v2.0.9
+        with:
+          name: publish-build
+          path: ./installer/files/
+
+      # Delete publish artifact so it does not count against storage
+      # https://github.com/marketplace/actions/delete-artifact
+      - name: Delete build artifact
+        uses: GeekyEggo/delete-artifact@v1.0.0
+        with:
+          name: publish-build
+          failOnError: false
+
+      # https://github.com/lukesampson/scoop
+      # https://github.com/NSIS-Dev/scoop-nsis
+      # https://github.com/NSIS-Dev/github-action-examples/
+      - name: Install NSIS
+        run: |
+          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+          scoop bucket add extras
+          scoop install nsis
+          #ALT scoop bucket add nsis https://github.com/NSIS-Dev/scoop-nsis
+          #ALT scoop install nsis/nsis
+          makensis -VERSION
+          makensis -HDRINFO
+
+      - name: Build NSIS installer
+        if: needs.version.outputs.TagNoV
+        shell: cmd
+        working-directory: ./installer
+        run: makensis -DgVerInstaller=${{ needs.version.outputs.TagNoV }}.0 Timekeeper.nsi
+
+      - name: Upload installer as an artifact
+        uses: actions/upload-artifact@v2.2.3
+        with:
+          name: publish-package
+          path: ./installer/timekeeper-setup.exe
+          retention-days: 1
+
+  publish:
+    needs: [ version, package ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Download installer as an artifact
+        uses: actions/download-artifact@v2.0.9
+        with:
+          name: publish-package
+          path: ./installer/
+
+      - name: Delete installer artifact
+        uses: GeekyEggo/delete-artifact@v1.0.0
+        with:
+          name: publish-package
+          failOnError: false
+
+      - name: Bump version and push tag
+        id: StepBump
+        uses: anothrNick/github-tag-action@1.34.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: none
+          WITH_V: true
+
+      # (This could be a separate action triggered by pushing a tag.)
+      # https://github.com/marketplace/actions/create-release
+      - name: Create release with artifact
+        if: success() && needs.version.outputs.TagNoV && steps.StepBump.outputs.new_tag
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.StepBump.outputs.new_tag }}
+          name: ${{ needs.version.outputs.TagNoV }}
+          # Note: Using "./release/*" uploads the individual files.
+          artifacts: installer/timekeeper-setup.exe
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,36 @@
+----------
+ Warranty
+----------
+ 12noon
+----------
+
+The author and distributors of this software are in no way legally liable
+for any negative effect resulting from its use.  In the extremely unlikely
+event that something undesirable does occur and 12noon is or we are held
+responsible, its and our liability is limited to the registration and
+licensing fees paid by the user to 12noon and/or to the author.
+
+LIMITED WARRANTY
+
+This product is provided on an "as is" basis.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, 12NOON DISCLAIMS
+ALL WARRANTIES RELATING TO THIS SOFTWARE, WHETHER EXPRESSED OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY
+OR FITNESS FOR A PARTICULAR PURPOSE.  NEITHER 12NOON NOR ANYONE ELSE
+WHO HAS BEEN INVOLVED IN THE CREATION, PRODUCTION, OR DELIVERY OF THIS
+SOFTWARE SHALL BE LIABLE FOR ANY INDIRECT, CONSEQUENTIAL, OR INCIDENTAL
+DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE SUCH SOFTWARE, EVEN
+IF 12NOON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR CLAIMS.
+IN NO EVENT SHALL 12NOON'S LIABILITY FOR ANY DAMAGES EVER EXCEED THE
+PRICE PAID FOR THE LICENSE TO USE THE SOFTWARE, REGARDLESS OF THE FORM
+OF THE CLAIM.  THE PERSON USING THE SOFTWARE BEARS ALL RISK AS TO THE
+QUALITY AND PERFORMANCE OF THE SOFTWARE.
+
+This agreement shall be governed by the laws of the State of Illinois
+and shall inure to the benefit of 12noon and any successors,
+administrators, heirs and assigns.  Any action or proceeding brought
+by either party against the other arising out of or related to this
+agreement shall be brought only in a STATE or FEDERAL COURT of
+competent jurisdiction located in Cook County, Illinois.  The parties
+hereby consent to in personam jurisdiction of said courts.
