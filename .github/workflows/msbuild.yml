@@ -182,5 +182,5 @@ jobs:
           tag: ${{ steps.StepBump.outputs.new_tag }}
           name: ${{ needs.version.outputs.TagNoV }}
           # Note: Using "./release/*" uploads the individual files.
-          artifacts: installer/timekeeper-setup.exe
+          artifacts: ./installer/timekeeper-setup.exe
           token: ${{ secrets.GITHUB_TOKEN }}
