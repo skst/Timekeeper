@@ -687,15 +687,15 @@ void CMyDeskBand::OnTimer(UINT_PTR idEvent)
 		CRect rClock;
 		_ctlClock.GetClientRect(&rClock);
 //TRACE("Compare: need(%d) to have(%d)\n", _sizeClockText.cx, rClock.Width());
-	   if ((_sizeClockText.cx > rClock.Width()) || (_sizeClockText.cy > rClock.Height()))
+		if ((_sizeClockText.cx > rClock.Width()) || (_sizeClockText.cy > rClock.Height()))
 		{
 			TRACE("New larger size: %dx%d\n", _sizeClockText.cx, _sizeClockText.cy);
 //For now, we're going to auto-size the control.
 //      ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_IDEAL_CX)), _sizeClockText.cx);
 //      ::AfxGetApp()->WriteProfileInt(CString(MAKEINTRESOURCE(IDS_INI_SECTION_CLOCK)), CString(MAKEINTRESOURCE(IDS_INI_IDEAL_CY)), _sizeClockText.cy);
 
-	      SetBandSizes();
-		   NotifyBandInfoChanged();
+			SetBandSizes();
+			NotifyBandInfoChanged();
 		}
    }
 }
