@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
   
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1
@@ -84,7 +84,7 @@ jobs:
       TagNoV: ${{ steps.StepTagNoV.outputs.new_tag }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # https://github.com/marketplace/actions/github-tag-bump
       # We want to use the tag without the 'v' prefix for the release name.
@@ -102,7 +102,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Download publish artifact from previous job
       # https://github.com/marketplace/actions/download-a-build-artifact
@@ -151,7 +151,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Download installer as an artifact
         uses: actions/download-artifact@v2.0.9
