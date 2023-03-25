@@ -115,7 +115,7 @@ jobs:
       # Delete publish artifact so it does not count against storage
       # https://github.com/marketplace/actions/delete-artifact
       - name: Delete build artifact
-        uses: GeekyEggo/delete-artifact@v1.0.0
+        uses: GeekyEggo/delete-artifact@v2.0.0
         with:
           name: publish-build
           failOnError: false
@@ -160,7 +160,7 @@ jobs:
           path: ./installer/
 
       - name: Delete installer artifact
-        uses: GeekyEggo/delete-artifact@v1.0.0
+        uses: GeekyEggo/delete-artifact@v2.0.0
         with:
           name: publish-package
           failOnError: false
