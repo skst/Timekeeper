@@ -156,7 +156,7 @@ Section "${gProductName}" sectionMain
 	#
 	#	Documents for all products
 	#
-	File /nonfatal "LICENSE"
+	File /nonfatal "files\LICENSE"
 
 	#
 	# Application files
