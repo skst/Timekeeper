@@ -21,6 +21,7 @@ copy /y ..\x64\Release\Timekeeper.dll		files\Timekeeper64.dll
 copy /y ..\help\*.htm							files
 copy /y ..\help\*.png							files
 copy /y ..\help\*.gif							files
+copy /y ..\LICENSE								files
 
 attrib -r files\*.*
 

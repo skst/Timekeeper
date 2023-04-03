@@ -156,13 +156,12 @@ Section "${gProductName}" sectionMain
 	#
 	#	Documents for all products
 	#
-	File /nonfatal "License.txt"
-	File /nonfatal "Warranty.txt"
+	File /nonfatal "LICENSE"
 
 	#
 	# Application files
 	#
-	File /r /x "License*.txt" /x "Warranty.txt" /x "Desktop.ini" /x "thumbs.db" /x *.dll "files\*.*"
+	File /r /x "LICENSE" /x "Desktop.ini" /x "thumbs.db" /x *.dll "files\*.*"
 	${If} ${RunningX64}
 		File "/oname=Timekeeper.dll" "files\Timekeeper64.dll"
 	${Else}
