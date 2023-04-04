@@ -253,8 +253,7 @@ Section "Uninstall"
 	#
 	#	Delete what we installed
 	#
-	Delete /rebootok "$INSTDIR\Warranty.txt"
-	Delete /rebootok "$INSTDIR\License.txt"
+	Delete /rebootok "$INSTDIR\LICENSE"
 	#
 	Delete /rebootok "$INSTDIR\Timekeeper.htm"
 	Delete /rebootok "$INSTDIR\*.png"

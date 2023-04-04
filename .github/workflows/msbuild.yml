@@ -2,13 +2,15 @@ name: MSBuild
 
 on:
   workflow_dispatch:
+    branches: [master, yaml]
   push:
+    branches: [master, yaml]
     paths-ignore:
       - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
   pull_request:
-    branches: [master]
+    branches: [master, yaml]
     paths-ignore:
       - '**/*.md'
       - '**/*.gitignore'
@@ -86,7 +88,8 @@ jobs:
     # Map a step output to a job output
     # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
     outputs:
-      TagNoV: ${{ steps.StepTagNoV.outputs.new_tag }}
+#      TagNoV: ${{ steps.StepTagNoV.outputs.new_tag }}
+      TagNoV: ${{ steps.TrimV.outputs.result }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -101,6 +104,19 @@ jobs:
           DRY_RUN: true
           DEFAULT_BUMP: none
           WITH_V: false
+
+      # BUG: `new_tag` has the 'v' even when WITH_V is false.
+      # So, we remove it.
+      - name: Substitute string
+        uses: bluwy/substitute-string-action@v2.0.1
+        id: TrimV
+        with:
+          _input-text: ${{ steps.StepTagNoV.outputs.new_tag }}
+          # This emits a warning which can be ignored.
+          v: ''
+
+      - name: Output trimmed version
+        run: echo Version=${{ steps.TrimV.outputs.result }}
 
   package:
     needs: version
