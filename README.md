@@ -5,6 +5,7 @@ task bar in your custom format.
 
 [12noon.com](https://12noon.com)
 
+(Unfortunately, Microsoft has dropped support for desk bands when they rewrote the task bar for Windows 11.)
 
 ## .: Features :.
 
@@ -65,7 +66,7 @@ Timekeeper's desk band. Use it to display the weather, a reminder, whatever.
 
 ## .: Building Timekeeper :.
 
-Timekeeper is built with *Visual Studio 2019*.
+Timekeeper is built with *Visual Studio*.
 
 ### Installer
 
