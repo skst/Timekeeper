@@ -1,5 +1,17 @@
 name: MSBuild
 
+#
+# Skip the workflow with one of the following:
+#   [skip ci]
+#   [ci skip]
+#   ***NO_CI***
+#
+# Note that a commit MUST include one of the following to create a release:
+#   #patch
+#   #minor
+#   #major
+#
+
 on:
   workflow_dispatch:
     branches: [master, yaml]
@@ -25,6 +37,8 @@ env:
   # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
   BUILD_CONFIGURATION: Release
 
+# Jobs are run in parallel unless `needs` is specified.
+# https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs
 jobs:
   build:
     if: (github.event_name == 'workflow_dispatch') || (!contains(toJson(github.event.commits.*.message), '***NO_CI***') && !contains(toJson(github.event.commits.*.message), '[ci skip]') && !contains(toJson(github.event.commits.*.message), '[skip ci]'))
@@ -80,8 +94,6 @@ jobs:
         # Use always() to always run this step even when there are failures
         #if: ${{ always() }}
 
-  # Jobs are run in parallel unless `needs` is specified.
-  # https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs
   version:
     needs: build
     runs-on: ubuntu-latest
@@ -90,6 +102,7 @@ jobs:
     outputs:
 #      TagNoV: ${{ steps.StepTagNoV.outputs.new_tag }}
       TagNoV: ${{ steps.TrimV.outputs.result }}
+      TagPart: ${{ steps.StepTagNoV.outputs.part }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -105,11 +118,14 @@ jobs:
           DEFAULT_BUMP: none
           WITH_V: false
 
+      - name: Output bump type
+        run: echo Bump type=${{ steps.StepTagNoV.outputs.part }}
+
       # BUG: `new_tag` has the 'v' even when WITH_V is false.
       # So, we remove it.
       - name: Substitute string
-        uses: bluwy/substitute-string-action@v2.0.1
         id: TrimV
+        uses: bluwy/substitute-string-action@v2.0.1
         with:
           _input-text: ${{ steps.StepTagNoV.outputs.new_tag }}
           # This emits a warning which can be ignored.
@@ -120,6 +136,7 @@ jobs:
 
   package:
     needs: version
+    if: needs.version.outputs.TagPart != 'none'
     runs-on: windows-latest
     steps:
       - name: Check out repository
