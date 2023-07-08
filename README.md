@@ -1,9 +1,9 @@
-# 12noon Timekeeper [![MSBuild](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml/badge.svg)](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml)
+# Timekeeper by [12noon.com](https://12noon.com)
+
+[![MSBuild](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml/badge.svg)](https://github.com/skst/Timekeeper/actions/workflows/msbuild.yml)
 
 A desktop tool to display the current date/time on the Windows
 task bar in your custom format.
-
-[12noon.com](https://12noon.com)
 
 (Unfortunately, Microsoft has dropped support for desk bands when they rewrote the task bar for Windows 11.)
 

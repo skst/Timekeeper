@@ -18,15 +18,17 @@ on:
   push:
     branches: [master, yaml]
     paths-ignore:
-      - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
+      - '**/*.md'
+      - 'LICENSE'
   pull_request:
     branches: [master, yaml]
     paths-ignore:
-      - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
+      - '**/*.md'
+      - 'LICENSE'
 
 env:
   # Path to the solution file relative to the root of the project.
@@ -36,6 +38,12 @@ env:
   # You can convert this to a build matrix if you need coverage of multiple configuration types.
   # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
   BUILD_CONFIGURATION: Release
+
+  ARTIFACT_PACKAGE: package-timekeeper
+
+concurrency:
+  group: sandbox-msbuild-${{ github.ref }}-1
+  cancel-in-progress: true
 
 # Jobs are run in parallel unless `needs` is specified.
 # https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#creating-dependent-jobs
@@ -75,11 +83,11 @@ jobs:
         run: |
           md files
           copy /y ..\Win32\Release\Timekeeper.dll	files
-          copy /y ..\x64\Release\Timekeeper.dll		files\Timekeeper64.dll
-          copy /y ..\help\*.htm							files
-          copy /y ..\help\*.png							files
-          copy /y ..\help\*.gif							files
-          copy /y ..\LICENSE								files
+          copy /y ..\x64\Release\Timekeeper.dll     files\Timekeeper64.dll
+          copy /y ..\help\*.htm						files
+          copy /y ..\help\*.png						files
+          copy /y ..\help\*.gif						files
+          copy /y ..\LICENSE						files
           attrib -r files\*.*
 
       # Upload release artifact to share with next job
@@ -88,7 +96,7 @@ jobs:
       - name: Upload installer files folder as a build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: publish-build
+          name: ${{env.ARTIFACT_PACKAGE}}
           path: ./installer/files/
           retention-days: 1
         # Use always() to always run this step even when there are failures
@@ -106,6 +114,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
 
       # https://github.com/marketplace/actions/github-tag-bump
       # We want to use the tag without the 'v' prefix for the release name.
@@ -147,7 +157,7 @@ jobs:
       - name: Download deployment folder as a build artifact
         uses: actions/download-artifact@v3
         with:
-          name: publish-build
+          name: ${{env.ARTIFACT_PACKAGE}}
           path: ./installer/files/
 
       # Delete publish artifact so it does not count against storage
@@ -155,7 +165,7 @@ jobs:
       - name: Delete build artifact
         uses: GeekyEggo/delete-artifact@v2
         with:
-          name: publish-build
+          name: ${{env.ARTIFACT_PACKAGE}}
           failOnError: false
 
       # https://github.com/lukesampson/scoop
@@ -195,6 +205,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
 
       - name: Download installer as an artifact
         uses: actions/download-artifact@v3
@@ -224,8 +236,8 @@ jobs:
         if: success() && needs.version.outputs.TagNoV && steps.StepBump.outputs.new_tag
         uses: ncipollo/release-action@v1.12.0
         with:
-          tag: ${{ steps.StepBump.outputs.new_tag }}
           name: ${{ needs.version.outputs.TagNoV }}
+          tag: ${{ steps.StepBump.outputs.new_tag }}
           # Note: Using "./release/*" uploads the individual files.
           artifacts: ./installer/timekeeper-setup.exe
           token: ${{ secrets.GITHUB_TOKEN }}
