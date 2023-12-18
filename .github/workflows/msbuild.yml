@@ -94,7 +94,7 @@ jobs:
       # https://docs.github.com/en/actions/guides/storing-workflow-data-as-artifacts#about-workflow-artifacts
       # https://github.com/marketplace/actions/upload-a-build-artifact
       - name: Upload installer files folder as a build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.ARTIFACT_PACKAGE}}
           path: ./installer/files/
@@ -193,7 +193,7 @@ jobs:
         run: makensis -DgVerInstaller=${{ needs.version.outputs.TagNoV }}.0 Timekeeper.nsi
 
       - name: Upload installer as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: publish-package
           path: ./installer/timekeeper-setup.exe
