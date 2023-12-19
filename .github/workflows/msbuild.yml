@@ -155,7 +155,7 @@ jobs:
       # Download publish artifact from previous job
       # https://github.com/marketplace/actions/download-a-build-artifact
       - name: Download deployment folder as a build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{env.ARTIFACT_PACKAGE}}
           path: ./installer/files/
@@ -209,7 +209,7 @@ jobs:
           fetch-depth: '0'
 
       - name: Download installer as an artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: publish-package
           path: ./installer/
