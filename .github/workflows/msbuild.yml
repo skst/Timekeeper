@@ -234,7 +234,7 @@ jobs:
       #     Error 422: Validation Failed: {"resource":"Release","code":"already_exists","field":"tag_name"}
       - name: Create release with artifact
         if: success() && needs.version.outputs.TagNoV && steps.StepBump.outputs.new_tag
-        uses: ncipollo/release-action@v1.13.0
+        uses: ncipollo/release-action@v1.14.0
         with:
           name: ${{ needs.version.outputs.TagNoV }}
           tag: ${{ steps.StepBump.outputs.new_tag }}
