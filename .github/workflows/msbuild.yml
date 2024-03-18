@@ -135,7 +135,7 @@ jobs:
       # So, we remove it.
       - name: Substitute string
         id: TrimV
-        uses: bluwy/substitute-string-action@v2.0.1
+        uses: bluwy/substitute-string-action@v3.0.0
         with:
           _input-text: ${{ steps.StepTagNoV.outputs.new_tag }}
           # This emits a warning which can be ignored.
