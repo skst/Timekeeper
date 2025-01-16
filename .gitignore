@@ -4,7 +4,6 @@ Thumbs.db
 *.aps
 *.bak
 *.diff
-*.exe
 *.lib
 *.pdb
 *.user

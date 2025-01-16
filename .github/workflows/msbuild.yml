@@ -176,7 +176,7 @@ jobs:
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
           # From actions/runner-images:
           # https://github.com/actions/runner-images/blob/main/images/win/scripts/Installers/Install-NSIS.ps1
-          $NsisVersion = '3.08'
+          $NsisVersion = '3.10'
           Install-Binary -Url "https://downloads.sourceforge.net/project/nsis/NSIS%203/${NsisVersion}/nsis-${NsisVersion}-setup.exe" -Name  "nsis-${NsisVersion}-setup.exe" -ArgumentList ('/S')
           #OLD Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
           #OLD scoop bucket add extras
