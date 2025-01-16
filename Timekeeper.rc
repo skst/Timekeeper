@@ -432,18 +432,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE
 BEGIN
     "#include ""afxres.h""\r\n"
     "#include ""Shared/PMSRes.h""\r\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -486,15 +486,15 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "12noon"
+            VALUE "CompanyName", "12noon LLC"
             VALUE "FileDescription", "12noon Timekeeper"
-            VALUE "FileVersion", "1.62.7.0"
+            VALUE "FileVersion", "1.62.9.0"
             VALUE "InternalName", "Timekeeper"
-            VALUE "LegalCopyright", "© 2004-2023 12noon, Stefan K.S. Tucker"
+            VALUE "LegalCopyright", "© 2004-2025 12noon LLC"
             VALUE "LegalTrademarks", "12noon"
             VALUE "OriginalFilename", "Timekeeper.dll"
             VALUE "ProductName", "12noon Timekeeper"
-            VALUE "ProductVersion", "1.62.7.0"
+            VALUE "ProductVersion", "1.62.9.0"
         END
     END
     BLOCK "VarFileInfo"

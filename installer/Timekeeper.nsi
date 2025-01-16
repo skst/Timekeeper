@@ -25,8 +25,8 @@
 !define gProductName				"Timekeeper"
 !define gProductTarget			"Timekeeper.dll"
 
-!define gCompanyName				"12noon"
-!define gCompanyURL				"http://12noon.com"
+!define gCompanyName				"12noon LLC"
+!define gCompanyURL				"https://12noon.com"
 
 !define gRegistryKeySuite		"Software\${gCompanyName}"
 !define gRegistryKeyApp			"${gRegistryKeySuite}\${gProductName}"
@@ -190,8 +190,8 @@ Section "${gProductName}" sectionMain
 	# Create shortcut for All Users
 #	SetShellVarContext all
 #	CreateShortCut "$SMPROGRAMS\${gProductName}.lnk" "$INSTDIR\${gProductTarget}" "" "$INSTDIR\icon-file.dll" 0
- 
- 
+
+
 	# Save Uninstall info for Add/Remove Programs
 	# http://nsis.sourceforge.net/Add_uninstall_information_to_Add/Remove_Programs
 	WriteRegStr		HKLM "${gUninstallKey}" "DisplayName"		"${gCompanyName} ${gProductName}"
@@ -209,7 +209,7 @@ Section "${gProductName}" sectionMain
 	WriteRegStr		HKLM "${gUninstallKey}" "URLUpdateInfo"	"${gCompanyURL}"
 	#ProductID
 	#Readme
-	
+
 	# Create uninstaller
 	WriteUninstaller "$INSTDIR\${gUninstallExe}"
 
