@@ -174,15 +174,36 @@ jobs:
       - name: Install NSIS
         run: |
           Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-          # From actions/runner-images:
-          # https://github.com/actions/runner-images/blob/main/images/win/scripts/Installers/Install-NSIS.ps1
+
+          # https://github.com/actions/runner-images/images/windows/scripts/build/Install-NSIS.ps1
           $NsisVersion = '3.10'
-          Install-Binary -Url "https://downloads.sourceforge.net/project/nsis/NSIS%203/${NsisVersion}/nsis-${NsisVersion}-setup.exe" -Name  "nsis-${NsisVersion}-setup.exe" -ArgumentList ('/S')
-          #OLD Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-          #OLD scoop bucket add extras
-          #OLD scoop install nsis
-          #OLD ALT scoop bucket add nsis https://github.com/NSIS-Dev/scoop-nsis
-          #OLD ALT scoop install nsis/nsis
+          $downloadPath = "https://downloads.sourceforge.net/project/nsis/NSIS%203/${NsisVersion}/nsis-${NsisVersion}-setup.exe"
+          $installerPath = "$env:TEMP\nsis-${NsisVersion}-setup.exe"
+          $nsisDir = 'C:\Program Files (x86)\NSIS'
+
+          # Download the installer
+          (New-Object System.Net.WebClient).DownloadFile($downloadPath, $installerPath)
+          # Run the installer silently
+          Start-Process -FilePath $installerPath -ArgumentList "/S" -Wait
+          # Check if NSIS is installed
+          if (Test-Path "$nsisDir\makensis.exe")
+          {
+            Write-Host 'NSIS is installed successfully.'
+          }
+          else
+          {
+            Write-Host 'NSIS installation failed.'
+          }
+          # Add NSIS directory to PATH
+          $env:PATH = "$nsisDir;$env:PATH"
+
+          #OLD2 Install-Binary -Url "https://downloads.sourceforge.net/project/nsis/NSIS%203/${NsisVersion}/nsis-${NsisVersion}-setup.exe" -Name  "nsis-${NsisVersion}-setup.exe" -ArgumentList ('/S')
+          #OLD1 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+          #OLD1 scoop bucket add extras
+          #OLD1 scoop install nsis
+          #OLD1 ALT scoop bucket add nsis https://github.com/NSIS-Dev/scoop-nsis
+          #OLD1 ALT scoop install nsis/nsis
+
           makensis -VERSION
           makensis -HDRINFO
 
